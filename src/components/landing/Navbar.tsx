@@ -7,6 +7,7 @@ const links = [
   { href: "#biz-haqimizda", label: "Biz haqimizda" },
   { href: "#shifokorlar", label: "Shifokorlar" },
   { href: "#fikrlar", label: "Fikrlar" },
+  { href: "#faq", label: "FAQ" },
   { href: "#aloqa", label: "Aloqa" },
 ];
 
