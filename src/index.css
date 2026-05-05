@@ -108,7 +108,15 @@
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* offset for sticky navbar */
+  }
+  section[id] { scroll-margin-top: 5rem; }
+  @media (max-width: 767px) {
+    html { scroll-padding-top: 4rem; }
+    section[id] { scroll-margin-top: 4rem; }
+  }
 }
 
 @layer utilities {
