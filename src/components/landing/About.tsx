@@ -1,48 +1,70 @@
-import { Check } from "lucide-react";
+import { motion } from "framer-motion";
+import { Award, Users, Microscope, HeartHandshake } from "lucide-react";
 import aboutImg from "@/assets/about-clinic.jpg";
 
-const points = [
-  "15+ yillik tajribaga ega shifokorlar",
-  "Eng so'nggi Yevropa uskunalari",
-  "Steril va xavfsiz muhit",
-  "Og'riqsiz davolash texnologiyalari",
-  "Qulay narxlar va to'lov rejasi",
+const features = [
+  { icon: Users, title: "Опытные врачи", desc: "Специалисты с 10+ годами практики и международными сертификатами." },
+  { icon: Microscope, title: "Современное оборудование", desc: "Цифровая диагностика, микроскопы и 3D-сканеры последнего поколения." },
+  { icon: HeartHandshake, title: "Доступные цены", desc: "Прозрачное ценообразование, рассрочка и программы лояльности." },
+  { icon: Award, title: "Гарантия качества", desc: "Официальная гарантия на все виды лечения и протезирования." },
 ];
 
 export const About = () => {
   return (
-    <section id="biz-haqimizda" className="py-20 md:py-28 bg-muted/40">
-      <div className="container grid lg:grid-cols-2 gap-12 items-center">
-        <div className="relative order-2 lg:order-1">
+    <section id="about" className="py-20 md:py-28 bg-muted/40 relative overflow-hidden">
+      <div className="container grid lg:grid-cols-2 gap-14 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative order-2 lg:order-1"
+        >
+          <div className="absolute -inset-6 gradient-primary rounded-[3rem] blur-3xl opacity-15" />
           <img
             src={aboutImg}
-            alt="DentaCare shifokori bemor bilan"
+            alt="DentaLux — врач с пациентом"
+            loading="lazy"
             width={900}
             height={800}
-            loading="lazy"
-            className="w-full h-auto rounded-3xl shadow-soft object-cover aspect-[9/8]"
+            className="relative w-full h-auto rounded-[2rem] shadow-elevated object-cover aspect-[9/8]"
           />
-        </div>
-        <div className="order-1 lg:order-2">
-          <span className="text-xs font-semibold text-primary uppercase tracking-wider">Biz haqimizda</span>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">
-            Sizning ishonchingiz — bizning mas'uliyatimiz
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-1 lg:order-2"
+        >
+          <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Почему мы?</span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-bold">
+            Премиум-сервис, которому <span className="text-gradient">доверяют</span>
           </h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed">
-            DentaCare — bu nafaqat klinika, balki sog'lom tabassum uchun ishonchli sherik.
-            Har bir bemorga individual yondashamiz va eng yaxshi natijani kafolatlaymiz.
+          <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+            DentaLux — это команда профессионалов, объединённых одной целью: подарить вам
+            здоровую и красивую улыбку без стресса и боли.
           </p>
-          <ul className="mt-7 space-y-3">
-            {points.map((p) => (
-              <li key={p} className="flex items-start gap-3">
-                <span className="mt-0.5 w-6 h-6 rounded-full bg-primary text-primary-foreground grid place-items-center flex-shrink-0">
-                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                </span>
-                <span className="text-foreground">{p}</span>
-              </li>
+          <div className="mt-8 grid sm:grid-cols-2 gap-4">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-5 rounded-2xl bg-card border border-border shadow-card"
+              >
+                <div className="w-11 h-11 rounded-xl gradient-primary text-primary-foreground grid place-items-center">
+                  <f.icon className="w-5 h-5" />
+                </div>
+                <h3 className="mt-4 font-bold">{f.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              </motion.div>
             ))}
-          </ul>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
