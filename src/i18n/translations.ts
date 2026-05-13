@@ -331,7 +331,8 @@ const dict = {
       ],
     },
   },
-} as const;
+};
 
-export type TranslationDict = (typeof dict)["uz"];
-export const translations = dict;
+export type TranslationDict = typeof dict.uz;
+export const translations: Record<Lang, TranslationDict> = dict;
+
