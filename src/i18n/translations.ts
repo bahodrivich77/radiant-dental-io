@@ -111,7 +111,7 @@ const dict = {
       name: "Ismingiz",
       namePh: "Ali Valiyev",
       phone: "Telefon",
-      phonePh: "+998 90 123 45 67",
+      phonePh: "+998-xx-xxx-xx-xx",
       service: "Xizmat",
       servicePh: "Xizmatni tanlang",
       date: "Sana",
