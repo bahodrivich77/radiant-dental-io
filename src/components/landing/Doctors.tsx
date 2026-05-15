@@ -1,40 +1,45 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin } from "lucide-react";
-import d1 from "@/assets/doctor-1.jpg";
-import d2 from "@/assets/doctor-2.jpg";
-import d3 from "@/assets/doctor-3.jpg";
+import { GraduationCap } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
-const imgs = [d1, d2, d3];
+const initials = (name: string) =>
+  name
+    .replace(/^Dr\.?\s*|^Др\.?\s*/i, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0])
+    .join("")
+    .toUpperCase();
 
 export const Doctors = () => {
   const { t } = useLang();
   return (
     <section id="doctors" className="py-20 md:py-28">
       <div className="container">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="max-w-2xl mx-auto text-center">
-          <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">{t.doctors.kicker}</span>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold">
-            {t.doctors.titleA} <span className="text-gradient">{t.doctors.titleB}</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground text-lg">{t.doctors.desc}</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center max-w-2xl mx-auto">
+          <span className="text-[11px] font-bold text-gold uppercase tracking-[0.25em]">— {t.doctors.kicker}</span>
+          <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">{t.doctors.title}</h2>
+          <p className="mt-5 text-muted-foreground text-lg">{t.doctors.desc}</p>
         </motion.div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {t.doctors.items.map((d, i) => (
-            <motion.div key={d.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }} whileHover={{ y: -8 }} className="group">
-              <div className="relative overflow-hidden rounded-3xl shadow-card">
-                <img src={imgs[i]} alt={d.name} loading="lazy" className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-6 text-background">
-                  <p className="text-xs font-semibold opacity-80 uppercase tracking-wider">{d.exp}</p>
-                  <h3 className="mt-1 text-xl font-bold">{d.name}</h3>
-                  <p className="text-sm opacity-90">{d.role}</p>
-                  <div className="mt-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a href="#" className="w-9 h-9 rounded-full bg-white/20 backdrop-blur grid place-items-center hover:bg-primary transition-colors"><Instagram className="w-4 h-4" /></a>
-                    <a href="#" className="w-9 h-9 rounded-full bg-white/20 backdrop-blur grid place-items-center hover:bg-primary transition-colors"><Linkedin className="w-4 h-4" /></a>
-                  </div>
-                </div>
+            <motion.div key={d.name}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }} whileHover={{ y: -6 }}
+              className="group relative bg-card border border-border rounded-3xl p-8 shadow-card hover:shadow-elevated transition-all text-center overflow-hidden"
+            >
+              <div className="absolute inset-x-0 top-0 h-32 gradient-primary opacity-90" />
+              <div className="absolute inset-x-0 top-0 h-32 gradient-mesh opacity-50" />
+              <div className="relative mt-8 mx-auto w-28 h-28 rounded-full bg-background border-4 border-background shadow-elevated grid place-items-center">
+                <span className="font-display text-4xl text-primary font-semibold">{initials(d.name)}</span>
+              </div>
+              <h3 className="relative mt-6 font-display text-2xl">{d.name}</h3>
+              <p className="relative mt-1 text-sm text-primary font-semibold">{d.role}</p>
+              <p className="relative mt-1 text-xs text-muted-foreground">{d.years} {t.doctors.yearsLabel}</p>
+              <div className="relative mt-5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-[11px] font-semibold">
+                <GraduationCap className="w-3.5 h-3.5" /> {d.edu}
               </div>
             </motion.div>
           ))}
