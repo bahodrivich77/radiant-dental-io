@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUp, MessageCircle } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
-const WHATSAPP = "https://wa.me/998901234567";
+const Telegram = "https://t.me/bahod1rovich77";
 
 export const FloatingButtons = () => {
   const { t } = useLang();
@@ -18,10 +18,10 @@ export const FloatingButtons = () => {
   return (
     <>
       <a
-        href={WHATSAPP}
+        href={Telegram}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={t.floating.whatsapp}
+        aria-label={t.floating.telegram}
         className="fixed bottom-5 right-5 md:bottom-7 md:right-7 z-40 grid place-items-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-elevated hover:scale-110 transition-transform"
       >
         <MessageCircle className="w-6 h-6" fill="currentColor" />
