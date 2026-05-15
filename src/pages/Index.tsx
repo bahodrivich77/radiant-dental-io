@@ -3,12 +3,13 @@ import { Hero } from "@/components/landing/Hero";
 import { Services } from "@/components/landing/Services";
 import { About } from "@/components/landing/About";
 import { Doctors } from "@/components/landing/Doctors";
-import { Stats } from "@/components/landing/Stats";
+import { Gallery } from "@/components/landing/Gallery";
 import { Pricing } from "@/components/landing/Pricing";
-import { Testimonials } from "@/components/landing/Testimonials";
-import { FAQ } from "@/components/landing/FAQ";
-import { Contact } from "@/components/landing/Contact";
+import { Reviews } from "@/components/landing/Reviews";
+import { Booking } from "@/components/landing/Booking";
+import { Location } from "@/components/landing/Location";
 import { Footer } from "@/components/landing/Footer";
+import { FloatingButtons } from "@/components/landing/FloatingButtons";
 
 const Index = () => {
   return (
@@ -18,14 +19,15 @@ const Index = () => {
         <Hero />
         <Services />
         <About />
-        <Stats />
         <Doctors />
+        <Gallery />
         <Pricing />
-        <Testimonials />
-        <FAQ />
-        <Contact />
+        <Reviews />
+        <Booking />
+        <Location />
       </main>
       <Footer />
+      <FloatingButtons />
     </div>
   );
 };
