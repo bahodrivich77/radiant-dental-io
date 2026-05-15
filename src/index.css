@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,51 +6,60 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Verdant Pearl — luxury medical palette
+       Warm ivory background, deep emerald-teal foreground,
+       champagne gold accent. Trustworthy, premium, memorable. */
+    --background: 36 33% 97%;        /* #FAF7F1 warm ivory */
+    --foreground: 173 40% 10%;       /* #0E2422 deep forest teal */
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 173 40% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 173 40% 12%;
 
-    /* Sky-500 #0EA5E9 */
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-    --primary-soft: 199 95% 96%;
-    --primary-glow: 199 95% 70%;
+    /* Emerald-teal primary */
+    --primary: 174 67% 21%;          /* #11574F */
+    --primary-foreground: 36 33% 97%;
+    --primary-soft: 174 30% 92%;
+    --primary-glow: 174 50% 40%;
 
-    /* Cyan-500 #06B6D4 */
-    --secondary: 189 94% 43%;
-    --secondary-foreground: 0 0% 100%;
+    /* Champagne gold accent */
+    --secondary: 38 50% 58%;         /* #C9A866 */
+    --secondary-foreground: 173 40% 10%;
 
-    --muted: 210 40% 98%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 36 25% 93%;             /* warm linen */
+    --muted-foreground: 173 12% 38%;
 
-    --accent: 199 95% 95%;
-    --accent-foreground: 199 89% 38%;
+    --accent: 174 30% 92%;           /* pale mint */
+    --accent-foreground: 174 67% 18%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --gold: 38 50% 58%;
+    --gold-soft: 38 60% 92%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 199 89% 48%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 33% 97%;
 
-    --radius: 1rem;
+    --border: 36 20% 88%;
+    --input: 36 20% 88%;
+    --ring: 174 67% 21%;
 
-    --gradient-hero: radial-gradient(60% 60% at 80% 0%, hsl(189 94% 90% / 0.7) 0%, transparent 60%),
-                     radial-gradient(50% 60% at 0% 20%, hsl(199 95% 92%) 0%, transparent 55%),
-                     linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(199 95% 98%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(189 94% 43%) 100%);
-    --gradient-mesh: radial-gradient(at 20% 10%, hsl(199 95% 90%) 0px, transparent 50%),
-                     radial-gradient(at 80% 80%, hsl(189 94% 88%) 0px, transparent 50%);
+    --radius: 0.875rem;
 
-    --shadow-soft: 0 10px 40px -12px hsl(199 89% 48% / 0.25);
-    --shadow-glow: 0 0 60px hsl(199 95% 70% / 0.5);
-    --shadow-card: 0 4px 24px -8px hsl(215 30% 30% / 0.08);
-    --shadow-elevated: 0 24px 60px -20px hsl(199 60% 30% / 0.2);
+    --gradient-hero:
+      radial-gradient(60% 60% at 85% 0%, hsl(38 60% 88% / 0.55) 0%, transparent 60%),
+      radial-gradient(55% 65% at 0% 30%, hsl(174 30% 90% / 0.7) 0%, transparent 55%),
+      linear-gradient(180deg, hsl(36 40% 98%) 0%, hsl(36 33% 96%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(174 67% 21%) 0%, hsl(174 55% 32%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 55% 62%) 0%, hsl(38 45% 50%) 100%);
+    --gradient-mesh:
+      radial-gradient(at 18% 8%, hsl(174 35% 90%) 0px, transparent 50%),
+      radial-gradient(at 82% 78%, hsl(38 55% 88%) 0px, transparent 50%);
+
+    --shadow-soft: 0 14px 40px -16px hsl(174 67% 21% / 0.25);
+    --shadow-glow: 0 0 60px hsl(38 50% 58% / 0.35);
+    --shadow-card: 0 4px 28px -10px hsl(173 40% 18% / 0.10);
+    --shadow-elevated: 0 28px 70px -24px hsl(174 60% 18% / 0.30);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,25 +72,25 @@
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 55%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 189 94% 50%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 199 89% 70%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 199 89% 55%;
+    --background: 173 35% 7%;
+    --foreground: 36 33% 96%;
+    --card: 173 30% 10%;
+    --card-foreground: 36 33% 96%;
+    --popover: 173 30% 10%;
+    --popover-foreground: 36 33% 96%;
+    --primary: 174 55% 50%;
+    --primary-foreground: 173 40% 8%;
+    --secondary: 38 55% 60%;
+    --secondary-foreground: 173 40% 8%;
+    --muted: 173 25% 14%;
+    --muted-foreground: 36 15% 70%;
+    --accent: 173 25% 16%;
+    --accent-foreground: 38 55% 70%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 36 33% 96%;
+    --border: 173 20% 18%;
+    --input: 173 20% 18%;
+    --ring: 174 55% 50%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -97,12 +106,14 @@
   * { @apply border-border; }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    letter-spacing: -0.02em;
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    letter-spacing: -0.01em;
+    font-weight: 600;
   }
   html {
     scroll-behavior: smooth;
@@ -118,6 +129,7 @@
 @layer utilities {
   .gradient-hero { background: var(--gradient-hero); }
   .gradient-primary { background: var(--gradient-primary); }
+  .gradient-gold { background: var(--gradient-gold); }
   .gradient-mesh { background: var(--gradient-mesh); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
@@ -129,9 +141,25 @@
     background-clip: text;
     color: transparent;
   }
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
   .glass {
-    background: hsl(0 0% 100% / 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: hsl(36 33% 97% / 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 }
