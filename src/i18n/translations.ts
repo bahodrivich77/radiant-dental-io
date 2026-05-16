@@ -443,8 +443,15 @@ const dict = {
       rights: "All rights reserved.",
     },
     floating: {
-      whatsapp: "Chat on WhatsApp",
+      telegram: "Message on Telegram",
       top: "Back to top",
+    },
+    bottomNav: {
+      home: "Home",
+      services: "Services",
+      doctors: "Doctors",
+      contact: "Contact",
+      booking: "Book",
     },
   },
 } as const;
