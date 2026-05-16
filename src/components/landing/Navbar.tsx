@@ -10,7 +10,6 @@ const langLabels: Record<Lang, string> = { uz: "O‘Z", ru: "RU", en: "EN" };
 export const Navbar = () => {
   const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
 
   const links = [
     { href: "#services", label: t.nav.services },
@@ -27,27 +26,9 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 1024) setOpen(false); };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith("#")) return;
     e.preventDefault();
-    setOpen(false);
     requestAnimationFrame(() => {
       const el = href === "#" ? document.body : document.querySelector(href);
       if (el) {
