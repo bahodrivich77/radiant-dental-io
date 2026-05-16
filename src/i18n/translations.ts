@@ -295,6 +295,13 @@ const dict = {
       telegram: "Написать в Telegram",
       top: "Наверх",
     },
+    bottomNav: {
+      home: "Главная",
+      services: "Услуги",
+      doctors: "Врачи",
+      contact: "Контакты",
+      booking: "Запись",
+    },
   },
   en: {
     nav: {
