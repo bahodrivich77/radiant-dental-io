@@ -141,8 +141,15 @@ const dict = {
       rights: "Barcha huquqlar himoyalangan.",
     },
     floating: {
-      whatsapp: "WhatsApp orqali yozish",
+      telegram: "Telegram orqali yozish",
       top: "Yuqoriga",
+    },
+    bottomNav: {
+      home: "Bosh sahifa",
+      services: "Xizmatlar",
+      doctors: "Shifokorlar",
+      contact: "Aloqa",
+      booking: "Qabul",
     },
   },
   ru: {
@@ -288,6 +295,13 @@ const dict = {
       telegram: "Написать в Telegram",
       top: "Наверх",
     },
+    bottomNav: {
+      home: "Главная",
+      services: "Услуги",
+      doctors: "Врачи",
+      contact: "Контакты",
+      booking: "Запись",
+    },
   },
   en: {
     nav: {
@@ -429,8 +443,15 @@ const dict = {
       rights: "All rights reserved.",
     },
     floating: {
-      whatsapp: "Chat on WhatsApp",
+      telegram: "Message on Telegram",
       top: "Back to top",
+    },
+    bottomNav: {
+      home: "Home",
+      services: "Services",
+      doctors: "Doctors",
+      contact: "Contact",
+      booking: "Book",
     },
   },
 } as const;

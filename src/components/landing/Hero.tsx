@@ -52,7 +52,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 gradient-hero overflow-hidden">
+    <section id="home" className="relative pt-28 pb-16 md:pt-36 md:pb-24 gradient-hero overflow-hidden">
       <div className="absolute inset-0 gradient-mesh opacity-40 pointer-events-none" />
       <div className="container relative grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
