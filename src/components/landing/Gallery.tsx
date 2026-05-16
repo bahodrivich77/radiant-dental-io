@@ -1,44 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
+import before1 from "@/assets/smile-before.jpg";
+import after1 from "@/assets/smile-after.jpg";
+import before2 from "@/assets/smile-before-2.jpg";
+import after2 from "@/assets/smile-after-2.jpg";
 
 type Sample = { cat: number; before: string; after: string };
 
-// SVG-based teeth before/after to avoid extra image weight + load instantly
-const teethSVG = (variant: "before" | "after", hue: number) => {
-  const isBefore = variant === "before";
-  const fill = isBefore ? `hsl(${hue} 25% 70%)` : "#FAFAF6";
-  const gum = isBefore ? `hsl(${hue} 35% 55%)` : `hsl(345 50% 65%)`;
-  const stain = isBefore;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(`
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'>
-      <defs>
-        <linearGradient id='bg' x1='0' x2='0' y1='0' y2='1'>
-          <stop offset='0' stop-color='${isBefore ? "#2a2a2a" : "#1a3b38"}'/>
-          <stop offset='1' stop-color='${isBefore ? "#1a1a1a" : "#0e2422"}'/>
-        </linearGradient>
-      </defs>
-      <rect width='600' height='400' fill='url(#bg)'/>
-      <ellipse cx='300' cy='240' rx='240' ry='90' fill='${gum}' opacity='0.8'/>
-      ${Array.from({ length: 10 }).map((_, i) => {
-        const x = 80 + i * 48;
-        const w = 40, h = 70;
-        return `<rect x='${x}' y='180' width='${w}' height='${h}' rx='10' fill='${fill}'/>${
-          stain ? `<rect x='${x + 4}' y='${190 + (i % 3) * 8}' width='${w - 8}' height='6' rx='3' fill='hsl(${hue} 30% 45%)' opacity='0.6'/>` : ""
-        }`;
-      }).join("")}
-      <ellipse cx='300' cy='180' rx='240' ry='40' fill='${gum}' opacity='0.9'/>
-    </svg>
-  `)}`;
-};
-
 const samples: Sample[] = [
-  { cat: 0, before: teethSVG("before", 35), after: teethSVG("after", 0) },
-  { cat: 0, before: teethSVG("before", 25), after: teethSVG("after", 0) },
-  { cat: 1, before: teethSVG("before", 30), after: teethSVG("after", 0) },
-  { cat: 2, before: teethSVG("before", 40), after: teethSVG("after", 0) },
-  { cat: 2, before: teethSVG("before", 45), after: teethSVG("after", 0) },
-  { cat: 3, before: teethSVG("before", 20), after: teethSVG("after", 0) },
+  { cat: 0, before: before1, after: after1 },
+  { cat: 2, before: before2, after: after2 },
+  { cat: 1, before: before1, after: after1 },
+  { cat: 3, before: before2, after: after2 },
 ];
 
 const Comparison = ({ before, after, labelBefore, labelAfter }: { before: string; after: string; labelBefore: string; labelAfter: string }) => {

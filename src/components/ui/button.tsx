@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold tracking-wide ring-offset-background transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 will-change-transform",
+  "group/btn relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-[13px] font-medium tracking-[0.04em] ring-offset-background transition-[background,box-shadow,border-color,color,transform] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-y-px [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.45)] hover:bg-primary/95 hover:shadow-[0_14px_34px_-10px_hsl(var(--primary)/0.55)] hover:-translate-y-0.5 hover:scale-[1.02]",
+          "bg-primary text-primary-foreground shadow-[0_1px_0_0_hsl(var(--primary-foreground)/0.18)_inset,0_10px_24px_-14px_hsl(var(--primary)/0.55)] hover:bg-[hsl(var(--primary)/0.94)] hover:shadow-[0_1px_0_0_hsl(var(--primary-foreground)/0.18)_inset,0_18px_36px_-18px_hsl(var(--primary)/0.65)]",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-[0_8px_24px_-8px_hsl(var(--destructive)/0.45)] hover:bg-destructive/95 hover:-translate-y-0.5 hover:scale-[1.02]",
+          "bg-destructive text-destructive-foreground shadow-[0_10px_24px_-14px_hsl(var(--destructive)/0.55)] hover:bg-[hsl(var(--destructive)/0.92)]",
         outline:
-          "relative overflow-hidden border-2 border-primary/30 bg-transparent text-foreground hover:text-primary-foreground hover:border-primary before:absolute before:inset-0 before:-z-10 before:bg-primary before:scale-x-0 before:origin-left before:transition-transform before:duration-300 hover:before:scale-x-100",
+          "border border-foreground/20 bg-transparent text-foreground hover:border-primary hover:text-primary hover:bg-primary/[0.04]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-[0_8px_24px_-8px_hsl(var(--secondary)/0.45)] hover:bg-secondary/90 hover:-translate-y-0.5 hover:scale-[1.02]",
+          "bg-secondary text-secondary-foreground shadow-[0_10px_24px_-14px_hsl(var(--secondary)/0.55)] hover:bg-[hsl(var(--secondary)/0.94)]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline rounded-none",
+        link: "text-primary underline-offset-[6px] decoration-[hsl(var(--gold))] decoration-1 hover:underline rounded-none px-0",
       },
       size: {
         default: "h-11 px-6 py-2",
-        sm: "h-9 px-4",
-        lg: "h-12 px-8 text-base",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-12 px-7 text-[13px]",
         icon: "h-10 w-10",
       },
     },
