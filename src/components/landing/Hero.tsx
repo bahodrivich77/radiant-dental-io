@@ -68,10 +68,10 @@ export const Hero = () => {
             <p>{t.hero.desc3}</p>
           </div>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full px-8 h-14 text-base gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-all border-0">
-              <a href="#contact">{t.hero.cta1} <ArrowRight className="ml-1 w-4 h-4" /></a>
+            <Button asChild size="lg" className="px-7">
+              <a href="#contact">{t.hero.cta1} <ArrowRight className="ml-1" /></a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base border-2 border-foreground/15 hover:border-primary hover:text-primary bg-transparent">
+            <Button asChild size="lg" variant="outline" className="px-7">
               <a href="#services">{t.hero.cta2}</a>
             </Button>
           </div>
