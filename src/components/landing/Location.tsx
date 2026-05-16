@@ -48,9 +48,9 @@ export const Location = () => {
                 <p className="text-sm text-muted-foreground">{t.location.hoursSun}</p>
               </div>
             </div>
-            <Button asChild size="lg" className="w-full rounded-full h-13 gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-shadow">
+            <Button asChild size="lg" className="w-full">
               <a href={DIR} target="_blank" rel="noopener noreferrer">
-                <Navigation className="w-4 h-4 mr-2" /> {t.location.route}
+                <Navigation className="mr-1" /> {t.location.route}
               </a>
             </Button>
           </div>

@@ -96,7 +96,7 @@ export const Navbar = () => {
 
           <div className="hidden lg:flex items-center gap-3">
             <LangSwitch />
-            <Button asChild size="sm" className="rounded-full px-5 h-11 gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-shadow border-0">
+            <Button asChild size="sm" className="px-5">
               <a href="#contact" onClick={(e) => handleNav(e, "#contact")}>{t.nav.cta}</a>
             </Button>
           </div>

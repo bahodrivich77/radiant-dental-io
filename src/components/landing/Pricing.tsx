@@ -61,7 +61,7 @@ export const Pricing = () => {
         </div>
 
         <div className="mt-10">
-          <Button asChild size="lg" className="rounded-full px-8 h-13 gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-shadow">
+          <Button asChild size="lg" className="px-8">
             <a href="#contact">{t.nav.ctaLong}</a>
           </Button>
         </div>

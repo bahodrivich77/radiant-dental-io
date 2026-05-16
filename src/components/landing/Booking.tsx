@@ -74,16 +74,16 @@ export const Booking = () => {
             <Label htmlFor="note">{t.booking.note}</Label>
             <Textarea id="note" name="note" placeholder={t.booking.notePh} rows={3} className="rounded-xl resize-none" />
           </div>
-          <Button type="submit" disabled={loading} className="w-full rounded-full gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-shadow border-0 h-13 text-base">
-            {loading ? t.booking.sending : (<>{t.booking.send} <Send className="ml-2 w-4 h-4" /></>)}
+          <Button type="submit" size="lg" disabled={loading} className="w-full">
+            {loading ? t.booking.sending : (<>{t.booking.send} <Send className="ml-1" /></>)}
           </Button>
 
           <div className="grid sm:grid-cols-2 gap-3 pt-2">
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-12 rounded-full border-2 border-[#25D366] text-[#25D366] font-semibold hover:bg-[#25D366] hover:text-white transition-colors">
-              <MessageCircle className="w-4 h-4" /> {t.booking.whatsapp}
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-12 rounded-[10px] border border-[#25D366]/60 text-[#25D366] text-[13px] font-medium tracking-[0.04em] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-colors">
+              <MessageCircle className="w-[15px] h-[15px]" /> {t.booking.whatsapp}
             </a>
-            <a href={TELEGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-12 rounded-full border-2 border-[#229ED9] text-[#229ED9] font-semibold hover:bg-[#229ED9] hover:text-white transition-colors">
-              <Send className="w-4 h-4" /> {t.booking.telegram}
+            <a href={TELEGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-12 rounded-[10px] border border-[#229ED9]/60 text-[#229ED9] text-[13px] font-medium tracking-[0.04em] hover:bg-[#229ED9] hover:text-white hover:border-[#229ED9] transition-colors">
+              <Send className="w-[15px] h-[15px]" /> {t.booking.telegram}
             </a>
           </div>
         </motion.form>
