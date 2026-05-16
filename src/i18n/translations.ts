@@ -141,8 +141,15 @@ const dict = {
       rights: "Barcha huquqlar himoyalangan.",
     },
     floating: {
-      whatsapp: "WhatsApp orqali yozish",
+      telegram: "Telegram orqali yozish",
       top: "Yuqoriga",
+    },
+    bottomNav: {
+      home: "Bosh sahifa",
+      services: "Xizmatlar",
+      doctors: "Shifokorlar",
+      contact: "Aloqa",
+      booking: "Qabul",
     },
   },
   ru: {
