@@ -11,11 +11,13 @@ import { Location } from "@/components/landing/Location";
 import { Footer } from "@/components/landing/Footer";
 import { FloatingButtons } from "@/components/landing/FloatingButtons";
 
+import { BottomNav } from "@/components/landing/BottomNav";
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main>
+      <main className="pb-20 md:pb-0">
         <Hero />
         <Services />
         <About />
@@ -28,6 +30,7 @@ const Index = () => {
       </main>
       <Footer />
       <FloatingButtons />
+      <BottomNav />
     </div>
   );
 };
