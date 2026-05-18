@@ -151,6 +151,33 @@ const dict = {
       contact: "Aloqa",
       booking: "Qabul",
     },
+    badgeStrip: {
+      items: [
+        "ISO Sertifikatlangan",
+        "Raqamli 3D Diagnostika",
+        "Shveysariya Implantlari",
+        "Og‘riqsiz Davolash",
+        "Bolalar uchun do‘stona muhit",
+        "Shaffof narxlar",
+        "Award-winning estetika",
+      ],
+    },
+    process: {
+      kicker: "Jarayon",
+      title: "Birinchi qo‘ng‘iroqdan tabassumgacha",
+      desc: "To‘rt qadamda — qulay, shaffof va og‘riqsiz.",
+      steps: [
+        { title: "Qo‘ng‘iroq", desc: "Sizga qulay vaqtni birgalikda tanlaymiz." },
+        { title: "Konsultatsiya", desc: "Bepul ko‘rik, 3D skan va individual davolash rejasi." },
+        { title: "Davolash", desc: "Xalqaro protokollar va og‘riqsiz texnologiyalar." },
+        { title: "Kuzatuv", desc: "Davolanishdan keyin bepul nazorat va kafolat." },
+      ],
+    },
+    ctaBanner: {
+      title: "Sog‘lom tabassum sari birinchi qadam bugun",
+      subtitle: "Bepul konsultatsiya uchun hoziroq qabulga yoziling.",
+      cta: "Qabulga yozilish",
+    },
   },
   ru: {
     nav: {
@@ -302,6 +329,33 @@ const dict = {
       contact: "Контакты",
       booking: "Запись",
     },
+    badgeStrip: {
+      items: [
+        "ISO Сертифицировано",
+        "Цифровая 3D диагностика",
+        "Швейцарские импланты",
+        "Безболезненное лечение",
+        "Дружелюбно к детям",
+        "Прозрачные цены",
+        "Эстетика, отмеченная наградами",
+      ],
+    },
+    process: {
+      kicker: "Процесс",
+      title: "От первого звонка до улыбки",
+      desc: "Четыре шага — комфортно, прозрачно и без боли.",
+      steps: [
+        { title: "Звонок", desc: "Подбираем удобное для вас время." },
+        { title: "Консультация", desc: "Бесплатный осмотр, 3D-скан и индивидуальный план." },
+        { title: "Лечение", desc: "Международные протоколы и безболезненные технологии." },
+        { title: "Наблюдение", desc: "Бесплатный контроль после лечения и гарантия." },
+      ],
+    },
+    ctaBanner: {
+      title: "Первый шаг к здоровой улыбке — сегодня",
+      subtitle: "Запишитесь прямо сейчас на бесплатную консультацию.",
+      cta: "Записаться на приём",
+    },
   },
   en: {
     nav: {
@@ -452,6 +506,33 @@ const dict = {
       doctors: "Doctors",
       contact: "Contact",
       booking: "Book",
+    },
+    badgeStrip: {
+      items: [
+        "ISO Certified",
+        "Digital 3D Diagnostics",
+        "Swiss Implants",
+        "Painless Treatment",
+        "Kid-friendly Care",
+        "Transparent Pricing",
+        "Award-winning Aesthetics",
+      ],
+    },
+    process: {
+      kicker: "Process",
+      title: "From first call to a brighter smile",
+      desc: "Four simple steps — comfortable, transparent, painless.",
+      steps: [
+        { title: "Call", desc: "We pick a time that works best for you." },
+        { title: "Consultation", desc: "Free exam, 3D scan and a personal treatment plan." },
+        { title: "Treatment", desc: "International protocols and painless technologies." },
+        { title: "Follow-up", desc: "Free post-treatment checks and warranty." },
+      ],
+    },
+    ctaBanner: {
+      title: "Your first step to a healthier smile — today",
+      subtitle: "Book a free consultation right now.",
+      cta: "Book an appointment",
     },
   },
 } as const;
