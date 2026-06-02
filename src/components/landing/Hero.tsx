@@ -57,6 +57,7 @@ export const Hero = () => {
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
   const frameY = useTransform(scrollYProgress, [0, 1], [0, -25]);
   const cardY = useTransform(scrollYProgress, [0, 1], [0, -45]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
   useEffect(() => {
     const el = ref.current;
@@ -269,7 +270,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.1, duration: 0.7 }}
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -30]) }}
+            style={{ y: badgeY }}
             className="absolute -top-5 -right-3 md:-right-10 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] px-6 py-5 shadow-elevated"
           >
             <div className="font-display text-4xl leading-none font-medium tabular-nums">
@@ -279,7 +280,6 @@ export const Hero = () => {
               years · est. 2014
             </div>
           </motion.div>
-        </motion.div>
         </motion.div>
       </div>
     </section>
