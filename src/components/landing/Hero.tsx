@@ -51,9 +51,12 @@ export const Hero = () => {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const imgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  // Refined parallax — slower, more cinematic
+  const imgY = useTransform(scrollYProgress, [0, 1], [0, 70]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -35]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
+  const frameY = useTransform(scrollYProgress, [0, 1], [0, -25]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, -45]);
 
   useEffect(() => {
     const el = ref.current;
@@ -93,14 +96,32 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-4 mb-8"
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-4 mb-10"
           >
-            <span className="h-px w-12 bg-[hsl(var(--gold))]" />
-            <span className="text-[10px] uppercase tracking-[0.35em] text-foreground/70 font-semibold">
+            <span className="h-px w-14 bg-gradient-to-r from-transparent via-[hsl(var(--gold))] to-[hsl(var(--gold))]" />
+            <span className="text-[10px] uppercase tracking-[0.4em] text-foreground/65 font-semibold">
               {t.hero.badge}
             </span>
+            <span className="hidden md:inline text-[10px] uppercase tracking-[0.4em] text-foreground/30">
+              — Est. MMXIV
+            </span>
           </motion.div>
+
+          {/* Display headline — editorial luxury */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-[clamp(2.85rem,7.8vw,6.75rem)] font-normal leading-[0.92] tracking-[-0.025em] text-foreground"
+          >
+            {t.hero.titleA}
+            <br />
+            <em className="not-italic font-medium italic text-[hsl(var(--primary))]">
+              {t.hero.titleB}
+            </em>
+            <span className="text-[hsl(var(--gold))] font-display italic">.</span>
+          </motion.h1>
 
           {/* Display headline — editorial luxury */}
           <motion.h1
@@ -163,16 +184,38 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: frameY }}
           className="relative"
         >
-          {/* Outer gold rule frame */}
-          <div className="relative">
-            <div className="absolute -inset-3 md:-inset-5 border border-[hsl(var(--gold))]/40 rounded-[2px] pointer-events-none" />
-            <div className="absolute -top-3 -left-3 md:-top-5 md:-left-5 w-8 h-8 border-t-2 border-l-2 border-[hsl(var(--gold))]" />
-            <div className="absolute -bottom-3 -right-3 md:-bottom-5 md:-right-5 w-8 h-8 border-b-2 border-r-2 border-[hsl(var(--gold))]" />
+          {/* Gold serif watermark behind frame */}
+          <div
+            aria-hidden
+            className="absolute -top-6 -left-6 md:-top-10 md:-left-12 font-display italic text-[hsl(var(--gold))]/15 text-[10rem] md:text-[14rem] leading-none select-none pointer-events-none"
+          >
+            ※
+          </div>
 
-            <div className="relative overflow-hidden rounded-[2px] shadow-elevated">
+          {/* Layered gold rule frame */}
+          <div className="relative">
+            {/* Outer hairline */}
+            <div className="absolute -inset-4 md:-inset-7 border border-[hsl(var(--gold))]/25 pointer-events-none" />
+            {/* Inner gold rule */}
+            <div className="absolute -inset-1.5 md:-inset-2.5 border border-[hsl(var(--gold))]/55 pointer-events-none" />
+            {/* Corner serifs */}
+            <div className="absolute -top-4 -left-4 md:-top-7 md:-left-7 w-10 h-10 border-t border-l border-[hsl(var(--gold))]" />
+            <div className="absolute -top-4 -right-4 md:-top-7 md:-right-7 w-10 h-10 border-t border-r border-[hsl(var(--gold))]" />
+            <div className="absolute -bottom-4 -left-4 md:-bottom-7 md:-left-7 w-10 h-10 border-b border-l border-[hsl(var(--gold))]" />
+            <div className="absolute -bottom-4 -right-4 md:-bottom-7 md:-right-7 w-10 h-10 border-b border-r border-[hsl(var(--gold))]" />
+
+            {/* Plate label on top of frame */}
+            <div className="absolute -top-4 md:-top-7 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[hsl(var(--background))] px-4 z-10">
+              <span className="text-[9px] uppercase tracking-[0.5em] text-[hsl(var(--gold))] font-semibold">
+                N° I — Atelier
+              </span>
+            </div>
+
+            <div className="relative overflow-hidden shadow-elevated">
               <motion.img
                 src={heroImg}
                 alt="DentaLux clinic interior"
@@ -181,30 +224,32 @@ export const Hero = () => {
                 style={{ y: imgY, scale: imgScale }}
                 className="w-full h-auto object-cover aspect-[4/5] will-change-transform"
               />
-              {/* Subtle warmth wash */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent pointer-events-none" />
+              {/* Warmth + vignette wash */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-foreground/5 pointer-events-none" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-[hsl(var(--background))]/10 pointer-events-none" />
 
-              {/* Caption — bottom left */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-[hsl(var(--background))]">
+              {/* Caption — bottom */}
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[hsl(var(--background))]">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.3em] opacity-80">— Plate I</p>
-                  <p className="font-display text-xl md:text-2xl mt-1 italic font-light">
+                  <p className="text-[9px] uppercase tracking-[0.4em] opacity-75">— Plate I</p>
+                  <p className="font-display text-xl md:text-2xl mt-2 italic font-light leading-tight">
                     The studio of smiles
                   </p>
                 </div>
-                <p className="text-[10px] uppercase tracking-[0.25em] opacity-70">
-                  Mirzo Ulug‘bek
+                <p className="text-[9px] uppercase tracking-[0.3em] opacity-65 text-right">
+                  Mirzo<br />Ulug‘bek
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Floating Google card */}
+          {/* Floating Google card — counter-parallax */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.7 }}
-            className="absolute -bottom-6 -left-2 md:-left-10 bg-background border border-foreground/10 shadow-elevated px-5 py-4 flex items-center gap-3 max-w-[260px]"
+            style={{ y: cardY }}
+            className="absolute -bottom-8 -left-3 md:-left-12 bg-background border border-foreground/10 shadow-elevated px-5 py-4 flex items-center gap-3 max-w-[260px]"
           >
             <div className="flex">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -212,25 +257,29 @@ export const Hero = () => {
               ))}
             </div>
             <div className="text-xs leading-tight">
-              <div className="font-display text-lg leading-none">4.9</div>
+              <div className="font-display text-lg leading-none tabular-nums">4.9</div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-1">
                 Google · 312
               </div>
             </div>
           </motion.div>
 
-          {/* Floating numeric badge */}
+          {/* Floating numeric badge — counter-parallax */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
-            className="absolute -top-4 -right-2 md:-right-8 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] px-5 py-4 shadow-elevated"
+            transition={{ delay: 1.1, duration: 0.7 }}
+            style={{ y: useTransform(scrollYProgress, [0, 1], [0, -30]) }}
+            className="absolute -top-5 -right-3 md:-right-10 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] px-6 py-5 shadow-elevated"
           >
-            <div className="font-display text-3xl leading-none font-medium">10<span className="text-[hsl(var(--gold))]">+</span></div>
-            <div className="text-[9px] uppercase tracking-[0.25em] opacity-80 mt-1.5">
+            <div className="font-display text-4xl leading-none font-medium tabular-nums">
+              10<span className="text-[hsl(var(--gold))] italic">+</span>
+            </div>
+            <div className="text-[9px] uppercase tracking-[0.3em] opacity-80 mt-2">
               years · est. 2014
             </div>
           </motion.div>
+        </motion.div>
         </motion.div>
       </div>
     </section>
