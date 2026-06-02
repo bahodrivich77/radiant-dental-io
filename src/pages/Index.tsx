@@ -15,10 +15,12 @@ import { Footer } from "@/components/landing/Footer";
 import { FloatingButtons } from "@/components/landing/FloatingButtons";
 
 import { BottomNav } from "@/components/landing/BottomNav";
+import { ScrollProgress } from "@/components/landing/ScrollProgress";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgress />
       <Navbar />
       <main className="pb-20 md:pb-0">
         <Hero />
