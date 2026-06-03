@@ -124,21 +124,6 @@ export const Hero = () => {
             <span className="text-[hsl(var(--gold))] font-display italic">.</span>
           </motion.h1>
 
-          {/* Display headline — editorial luxury */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[clamp(2.75rem,7.5vw,6.5rem)] font-normal leading-[0.95] tracking-[-0.02em] text-foreground"
-          >
-            {t.hero.titleA}
-            <br />
-            <em className="not-italic font-medium italic text-[hsl(var(--primary))]">
-              {t.hero.titleB}
-            </em>
-            <span className="text-[hsl(var(--gold))] font-display">.</span>
-          </motion.h1>
-
           {/* Editorial lead paragraph */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
