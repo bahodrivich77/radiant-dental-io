@@ -26,43 +26,38 @@ const useCounter = (to: number, run: boolean, duration = 1800) => {
   return val;
 };
 
-const StatCell = ({ to, suffix, label, run }: { to: number; suffix: string; label: string; run: boolean }) => {
-  const v = useCounter(to, run);
-  return (
-    <div className="flex flex-col gap-1.5">
-      <div className="font-display text-4xl md:text-5xl font-medium text-foreground leading-none tabular-nums">
-        {v.toLocaleString()}
-        <span className="text-[hsl(var(--gold))]">{suffix}</span>
-      </div>
-      <div className="text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-muted-foreground font-medium">
-        {label}
-      </div>
-    </div>
-  );
-};
+const GoogleGlyph = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24" aria-hidden>
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" />
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+  </svg>
+);
 
 export const Hero = () => {
   const { t } = useLang();
-  const ref = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
   const [run, setRun] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  // Refined parallax — slower, more cinematic
-  const imgY = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -35]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
-  const frameY = useTransform(scrollYProgress, [0, 1], [0, -25]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [0, -45]);
-  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.1]);
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = statsRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setRun(true); io.disconnect(); } }, { threshold: 0.2 });
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setRun(true); io.disconnect(); } },
+      { threshold: 0.2 },
+    );
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -71,10 +66,10 @@ export const Hero = () => {
     <section
       id="home"
       ref={sectionRef}
-      className="relative pt-28 md:pt-36 pb-20 md:pb-28 gradient-hero overflow-hidden"
+      className="relative pt-28 md:pt-36 pb-24 md:pb-32 gradient-hero overflow-hidden"
     >
       {/* Editorial paper texture */}
-      <div className="absolute inset-0 gradient-mesh opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 gradient-mesh opacity-30 pointer-events-none" />
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.025] mix-blend-multiply"
         style={{
@@ -83,188 +78,220 @@ export const Hero = () => {
         }}
       />
 
-      {/* Editorial floating index */}
-      <div className="absolute top-28 md:top-36 right-6 md:right-12 hidden md:flex flex-col items-end gap-2 text-[10px] uppercase tracking-[0.35em] text-foreground/45 font-medium z-10">
-        <span>N°01 — DentaLux</span>
-        <span className="h-10 w-px bg-foreground/20" />
-        <span className="[writing-mode:vertical-rl] rotate-180">Toshkent · 2014</span>
-      </div>
+      {/* Rotated background wordmark */}
+      <motion.div
+        aria-hidden
+        style={{ y: watermarkY }}
+        className="absolute -left-24 md:-left-32 top-1/2 -translate-y-1/2 -rotate-90 origin-center pointer-events-none select-none hidden md:block"
+      >
+        <span className="font-display text-[10rem] lg:text-[14rem] font-semibold tracking-tighter leading-none uppercase whitespace-nowrap text-foreground/[0.035]">
+          Dental Excellence
+        </span>
+      </motion.div>
 
-      <div className="container relative grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
-        {/* Left — editorial text */}
-        <motion.div style={{ y: textY }}>
-          {/* Kicker line */}
+      <div className="container relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        {/* LEFT — Editorial type column */}
+        <motion.div style={{ y: textY }} className="lg:col-span-6 relative z-20">
+          {/* Kicker */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-4 mb-10"
+            className="flex items-center gap-4 mb-8 md:mb-10 overflow-hidden"
           >
-            <span className="h-px w-14 bg-gradient-to-r from-transparent via-[hsl(var(--gold))] to-[hsl(var(--gold))]" />
-            <span className="text-[10px] uppercase tracking-[0.4em] text-foreground/65 font-semibold">
+            <span className="h-px w-14 bg-[hsl(var(--gold))]" />
+            <span className="text-[11px] uppercase tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">
               {t.hero.badge}
-            </span>
-            <span className="hidden md:inline text-[10px] uppercase tracking-[0.4em] text-foreground/30">
-              — Est. MMXIV
             </span>
           </motion.div>
 
-          {/* Display headline — editorial luxury */}
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[clamp(2.85rem,7.8vw,6.75rem)] font-normal leading-[0.92] tracking-[-0.025em] text-foreground"
+            className="font-display font-light leading-[0.88] tracking-[-0.02em] text-foreground text-[clamp(2.9rem,7.6vw,6.5rem)]"
           >
-            {t.hero.titleA}
-            <br />
-            <em className="not-italic font-medium italic text-[hsl(var(--primary))]">
-              {t.hero.titleB}
+            {t.hero.titleA.split(" ").slice(0, -1).join(" ")}{" "}
+            <br className="hidden sm:block" />
+            <em className="italic font-normal text-[hsl(var(--gold))]">
+              {t.hero.titleA.split(" ").slice(-1)[0]}{" "}
+              {t.hero.titleB.split(" ").slice(0, 1)[0]}
             </em>
-            <span className="text-[hsl(var(--gold))] font-display italic">.</span>
+            <br className="hidden sm:block" />
+            <span className="font-light">
+              {t.hero.titleB.split(" ").slice(1).join(" ")}
+            </span>
           </motion.h1>
 
-          {/* Editorial lead paragraph */}
-          <motion.div
+          {/* Lead */}
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 max-w-md"
+            className="mt-10 max-w-md text-[15px] leading-[1.75] text-foreground/65 font-light"
           >
-            <p className="text-base md:text-[17px] leading-[1.7] text-foreground/75 font-light">
-              {t.hero.desc1} {t.hero.desc2}{" "}
-              <span className="text-foreground/55 italic">— {t.hero.desc3}</span>
-            </p>
-          </motion.div>
+            {t.hero.desc1} <span className="text-foreground/45">— {t.hero.desc3}</span>
+          </motion.p>
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-10 flex flex-wrap gap-3 items-center"
+            className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
           >
-            <Button asChild size="lg" className="px-8 h-12 group">
-              <a href="#contact">
+            {/* Primary — vertical fill on hover */}
+            <a
+              href="#contact"
+              className="group relative inline-flex items-center justify-center px-10 md:px-12 py-4 md:py-5 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] text-[11px] uppercase tracking-[0.22em] font-semibold overflow-hidden shadow-[0_18px_40px_-20px_hsl(var(--primary)/0.55)] transition-shadow duration-500 hover:shadow-[0_24px_50px_-18px_hsl(var(--gold)/0.55)]"
+            >
+              <span className="relative z-10 transition-colors duration-500 group-hover:text-foreground">
                 {t.hero.cta1}
-                <ArrowUpRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </Button>
-            <Button asChild variant="link" className="text-foreground/80 hover:text-[hsl(var(--primary))] px-2">
-              <a href="#services">{t.hero.cta2}</a>
-            </Button>
+              </span>
+              <span className="absolute inset-0 bg-[hsl(var(--gold))] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            </a>
+
+            {/* Secondary — underline link */}
+            <a
+              href="#services"
+              className="group inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] font-semibold text-foreground border-b border-foreground/20 pb-2 hover:border-[hsl(var(--gold))] hover:text-[hsl(var(--gold))] transition-colors"
+            >
+              {t.hero.cta2}
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </motion.div>
 
-          {/* Stats — editorial rule line */}
-          <div
-            ref={ref}
-            className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 max-w-2xl border-t border-foreground/15 pt-8"
+          {/* Trust row */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="mt-14 flex items-center gap-6 md:gap-8"
           >
-            {statValues.map((v, i) => (
-              <StatCell key={i} to={v} suffix={statSuffix[i]} label={t.hero.stats[i].label} run={run} />
-            ))}
+            <div className="flex -space-x-3">
+              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.12)] border border-[hsl(var(--gold))/30]" />
+              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.18)] border border-[hsl(var(--gold))/30]" />
+              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--gold))] grid place-items-center text-[10px] font-bold text-[hsl(var(--primary-foreground))]">
+                +10
+              </div>
+            </div>
+            <div className="h-10 w-px bg-foreground/15" />
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/45 font-bold mb-1">
+                {t.hero.stats[1]?.label ?? "5000+"}
+              </div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/80">
+                {t.hero.stats[2]?.label ?? "Yevropa standartlari"}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Editorial stat rule */}
+          <div
+            ref={statsRef}
+            className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 max-w-2xl border-t border-foreground/15 pt-8"
+          >
+            {statValues.map((v, i) => {
+              const C = () => {
+                const val = useCounter(v, run);
+                return (
+                  <div className="flex flex-col gap-1.5">
+                    <div className="font-display text-3xl md:text-4xl font-normal text-foreground leading-none tabular-nums">
+                      {val.toLocaleString()}
+                      <span className="text-[hsl(var(--gold))]">{statSuffix[i]}</span>
+                    </div>
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground font-medium">
+                      {t.hero.stats[i].label}
+                    </div>
+                  </div>
+                );
+              };
+              return <C key={i} />;
+            })}
           </div>
         </motion.div>
 
-        {/* Right — editorial portrait frame */}
+        {/* RIGHT — Architectural framed plate */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          style={{ y: frameY }}
-          className="relative"
+          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-16 lg:py-0"
         >
-          {/* Gold serif watermark behind frame */}
-          <div
-            aria-hidden
-            className="absolute -top-6 -left-6 md:-top-10 md:-left-12 font-display italic text-[hsl(var(--gold))]/15 text-[10rem] md:text-[14rem] leading-none select-none pointer-events-none"
-          >
-            ※
-          </div>
+          <div className="relative w-full max-w-[460px] aspect-[4/5]">
+            {/* Architectural offset borders */}
+            <div className="absolute -top-6 md:-top-10 -right-6 md:-right-10 w-full h-full border border-[hsl(var(--gold))]/35 z-0 pointer-events-none" />
+            <div className="absolute -bottom-5 md:-bottom-8 -left-5 md:-left-8 w-1/2 h-1/2 border-l border-b border-foreground/15 z-0 pointer-events-none" />
 
-          {/* Layered gold rule frame */}
-          <div className="relative">
-            {/* Outer hairline */}
-            <div className="absolute -inset-4 md:-inset-7 border border-[hsl(var(--gold))]/25 pointer-events-none" />
-            {/* Inner gold rule */}
-            <div className="absolute -inset-1.5 md:-inset-2.5 border border-[hsl(var(--gold))]/55 pointer-events-none" />
-            {/* Corner serifs */}
-            <div className="absolute -top-4 -left-4 md:-top-7 md:-left-7 w-10 h-10 border-t border-l border-[hsl(var(--gold))]" />
-            <div className="absolute -top-4 -right-4 md:-top-7 md:-right-7 w-10 h-10 border-t border-r border-[hsl(var(--gold))]" />
-            <div className="absolute -bottom-4 -left-4 md:-bottom-7 md:-left-7 w-10 h-10 border-b border-l border-[hsl(var(--gold))]" />
-            <div className="absolute -bottom-4 -right-4 md:-bottom-7 md:-right-7 w-10 h-10 border-b border-r border-[hsl(var(--gold))]" />
-
-            {/* Plate label on top of frame */}
-            <div className="absolute -top-4 md:-top-7 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[hsl(var(--background))] px-4 z-10">
-              <span className="text-[9px] uppercase tracking-[0.5em] text-[hsl(var(--gold))] font-semibold">
-                N° I — Atelier
-              </span>
-            </div>
-
-            <div className="relative overflow-hidden shadow-elevated">
+            {/* Main framed image */}
+            <div className="relative w-full h-full overflow-hidden z-10 shadow-[30px_30px_80px_-20px_hsl(var(--primary)/0.25)]">
               <motion.img
                 src={heroImg}
-                alt="DentaLux clinic interior"
+                alt="DentaLux — Toshkentdagi premium stomatologiya interyeri"
                 width={1280}
                 height={1600}
                 style={{ y: imgY, scale: imgScale }}
-                className="w-full h-auto object-cover aspect-[4/5] will-change-transform"
+                className="absolute inset-0 w-full h-full object-cover will-change-transform"
               />
-              {/* Warmth + vignette wash */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-foreground/5 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--primary))]/35 via-transparent to-transparent pointer-events-none" />
               <div className="absolute inset-0 ring-1 ring-inset ring-[hsl(var(--background))]/10 pointer-events-none" />
 
-              {/* Caption — bottom */}
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-[hsl(var(--background))]">
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.4em] opacity-75">— Plate I</p>
-                  <p className="font-display text-xl md:text-2xl mt-2 italic font-light leading-tight">
-                    The studio of smiles
-                  </p>
+              {/* Plate caption */}
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-[hsl(var(--background))]/90">
+                <span className="text-[9px] uppercase tracking-[0.4em]">— Plate N° I</span>
+                <span className="text-[9px] uppercase tracking-[0.3em] opacity-75">
+                  Mirzo Ulug‘bek · 2014
+                </span>
+              </div>
+            </div>
+
+            {/* Floating dark "10+" credibility badge */}
+            <motion.div
+              style={{ y: badgeY }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9, duration: 0.7 }}
+              className="absolute -bottom-10 right-6 md:right-12 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-7 md:p-9 z-30 shadow-elevated min-w-[200px]"
+            >
+              <div className="font-display text-6xl md:text-7xl font-light leading-none text-[hsl(var(--gold))] tabular-nums">
+                10<span className="text-2xl md:text-3xl align-top">+</span>
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.32em] mt-3 opacity-75 font-medium whitespace-nowrap">
+                {t.hero.stats[0]?.label ?? "Yillik tajriba"}
+              </div>
+              <svg
+                className="absolute top-3 right-3 w-6 h-6 opacity-25"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden
+              >
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+              </svg>
+            </motion.div>
+
+            {/* Floating Google rating card */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.7 }}
+              className="absolute -top-6 -left-4 md:-left-12 bg-[hsl(var(--background))]/95 backdrop-blur-md border border-foreground/10 p-5 z-30 shadow-elevated flex items-center gap-4"
+            >
+              <div className="w-11 h-11 grid place-items-center bg-[hsl(var(--background))] shadow-inner">
+                <GoogleGlyph />
+              </div>
+              <div>
+                <div className="flex gap-0.5 text-[hsl(var(--gold))] mb-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-current" />
+                  ))}
                 </div>
-                <p className="text-[9px] uppercase tracking-[0.3em] opacity-65 text-right">
-                  Mirzo<br />Ulug‘bek
-                </p>
+                <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-foreground/50">
+                  4.9 · 312 sharhlar
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-
-          {/* Floating Google card — counter-parallax */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7 }}
-            style={{ y: cardY }}
-            className="absolute -bottom-8 -left-3 md:-left-12 bg-background border border-foreground/10 shadow-elevated px-5 py-4 flex items-center gap-3 max-w-[260px]"
-          >
-            <div className="flex">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-[hsl(var(--gold))] text-[hsl(var(--gold))]" />
-              ))}
-            </div>
-            <div className="text-xs leading-tight">
-              <div className="font-display text-lg leading-none tabular-nums">4.9</div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-1">
-                Google · 312
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Floating numeric badge — counter-parallax */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.1, duration: 0.7 }}
-            style={{ y: badgeY }}
-            className="absolute -top-5 -right-3 md:-right-10 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] px-6 py-5 shadow-elevated"
-          >
-            <div className="font-display text-4xl leading-none font-medium tabular-nums">
-              10<span className="text-[hsl(var(--gold))] italic">+</span>
-            </div>
-            <div className="text-[9px] uppercase tracking-[0.3em] opacity-80 mt-2">
-              years · est. 2014
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
