@@ -22,6 +22,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <ScrollProgress />
+      <SectionIndex />
       <Navbar />
       <main className="pb-20 md:pb-0">
         <Hero />
