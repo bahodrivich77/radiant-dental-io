@@ -16,6 +16,7 @@ import { FloatingButtons } from "@/components/landing/FloatingButtons";
 
 import { BottomNav } from "@/components/landing/BottomNav";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
+import { SectionIndex } from "@/components/landing/SectionIndex";
 
 const Index = () => {
   return (
