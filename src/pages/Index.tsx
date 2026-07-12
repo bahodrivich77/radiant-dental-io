@@ -16,11 +16,13 @@ import { FloatingButtons } from "@/components/landing/FloatingButtons";
 
 import { BottomNav } from "@/components/landing/BottomNav";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
+import { SectionIndex } from "@/components/landing/SectionIndex";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <ScrollProgress />
+      <SectionIndex />
       <Navbar />
       <main className="pb-20 md:pb-0">
         <Hero />
