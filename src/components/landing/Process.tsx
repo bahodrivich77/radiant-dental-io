@@ -36,7 +36,7 @@ export const Process = () => {
                   {kicker}
                 </span>
               </div>
-              <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-[clamp(2.4rem,5.6vw,4.8rem)]">
+              <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-[clamp(2rem,5.6vw,4.8rem)]">
                 {title.split(" ").slice(0, -1).join(" ")}{" "}
                 <em className="italic text-[hsl(var(--gold))] font-normal">
                   {title.split(" ").slice(-1)[0]}

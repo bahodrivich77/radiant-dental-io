@@ -29,7 +29,7 @@ export const Reviews = () => {
                 {t.reviews.kicker} · Voix
               </span>
             </div>
-            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2.4rem,5.8vw,5rem)]">
+            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,5.8vw,5rem)]">
               {t.reviews.title.split(" ").slice(0, -1).join(" ")}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 {t.reviews.title.split(" ").slice(-1)[0]}
@@ -66,9 +66,9 @@ export const Reviews = () => {
           {items.map((r, i) => (
             <motion.article
               key={i}
-              initial={{ opacity: 0.6 }}
+              initial={{ opacity: 1 }}
               whileHover={{ opacity: 1 }}
-              className="w-[360px] sm:w-[420px] shrink-0 bg-[hsl(var(--background))] border border-foreground/10 p-8 md:p-9 relative"
+              className="w-[300px] sm:w-[380px] md:w-[420px] shrink-0 bg-[hsl(var(--background))] border border-foreground/10 p-7 sm:p-8 md:p-9 relative"
             >
               <Quote
                 className="absolute top-6 right-6 w-8 h-8 text-[hsl(var(--gold))]/20"

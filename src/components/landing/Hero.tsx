@@ -110,7 +110,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light leading-[0.88] tracking-[-0.02em] text-foreground text-[clamp(2.9rem,7.6vw,6.5rem)]"
+            className="font-display font-light leading-[0.9] tracking-[-0.02em] text-foreground text-[clamp(2.1rem,7vw,6.5rem)]"
           >
             {t.hero.titleA.split(" ").slice(0, -1).join(" ")}{" "}
             <br className="hidden sm:block" />
@@ -118,7 +118,7 @@ export const Hero = () => {
               {t.hero.titleA.split(" ").slice(-1)[0]}{" "}
               {t.hero.titleB.split(" ").slice(0, 1)[0]}
             </em>
-            <br className="hidden sm:block" />
+            <br className="hidden sm:block" />{" "}
             <span className="font-light">
               {t.hero.titleB.split(" ").slice(1).join(" ")}
             </span>

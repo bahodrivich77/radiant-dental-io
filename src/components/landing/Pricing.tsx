@@ -26,7 +26,7 @@ export const Pricing = () => {
               <span className="h-px w-14 bg-[hsl(var(--gold))]" />
               <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-foreground/50">{t.pricing.kicker}</span>
             </div>
-            <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-foreground text-[clamp(2.4rem,5.6vw,4.8rem)]">
+            <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-foreground text-[clamp(2rem,5.6vw,4.8rem)]">
               {t.pricing.title.split(" ").slice(0, -1).join(" ")}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 {t.pricing.title.split(" ").slice(-1)[0]}
@@ -85,8 +85,8 @@ export const Pricing = () => {
                   <span className="font-display text-sm text-foreground/40 tabular-nums w-8">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div className="flex items-baseline min-w-0 gap-2">
-                    <h3 className="font-display text-lg md:text-2xl font-light tracking-[-0.01em] truncate">
+                  <div className="flex items-baseline min-w-0 gap-2 flex-wrap sm:flex-nowrap">
+                    <h3 className="font-display text-base sm:text-lg md:text-2xl font-light tracking-[-0.01em]">
                       {p.name}
                       {featured && (
                         <span className="ml-2 align-middle inline-block text-[9px] uppercase tracking-[0.25em] font-bold text-[hsl(var(--gold))]">
@@ -97,7 +97,7 @@ export const Pricing = () => {
                     {/* Leader dots */}
                     <span
                       aria-hidden
-                      className="flex-1 mx-2 h-px self-center border-b border-dotted border-foreground/25 min-w-4"
+                      className="hidden sm:block flex-1 mx-2 h-px self-center border-b border-dotted border-foreground/25 min-w-4"
                     />
                   </div>
                   <div className="text-right shrink-0">
