@@ -22,7 +22,7 @@ export const About = () => {
               </div>
 
               {/* Offset frame */}
-              <div className="absolute -top-6 -right-6 w-full h-full border border-[hsl(var(--gold))/40] pointer-events-none z-0" />
+              <div className="absolute -top-6 -right-6 w-full h-full border border-[hsl(var(--gold)/0.4)] pointer-events-none z-0" />
 
               <div className="relative w-full h-full overflow-hidden shadow-elevated z-10">
                 <img
