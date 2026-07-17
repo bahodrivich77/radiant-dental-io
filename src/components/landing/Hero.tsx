@@ -118,7 +118,7 @@ export const Hero = () => {
               {t.hero.titleA.split(" ").slice(-1)[0]}{" "}
               {t.hero.titleB.split(" ").slice(0, 1)[0]}
             </em>
-            <br className="hidden sm:block" />
+            <br className="hidden sm:block" />{" "}
             <span className="font-light">
               {t.hero.titleB.split(" ").slice(1).join(" ")}
             </span>
