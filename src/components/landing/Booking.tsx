@@ -57,7 +57,7 @@ export const Booking = () => {
                   {t.booking.kicker}
                 </span>
               </div>
-              <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2.4rem,5.6vw,4.6rem)]">
+              <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,5.6vw,4.6rem)]">
                 {t.booking.title.split(" ").slice(0, -1).join(" ")}{" "}
                 <em className="italic text-[hsl(var(--gold))] font-normal">
                   {t.booking.title.split(" ").slice(-1)[0]}

@@ -71,7 +71,7 @@ export const About = () => {
                   {t.why.kicker}
                 </span>
               </div>
-              <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-foreground text-[clamp(2.2rem,5vw,4.4rem)]">
+              <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-foreground text-[clamp(1.9rem,5vw,4.4rem)]">
                 {t.why.title.split(" ").slice(0, -1).join(" ")}{" "}
                 <em className="italic text-[hsl(var(--gold))] font-normal">
                   {t.why.title.split(" ").slice(-1)[0]}

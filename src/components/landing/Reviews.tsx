@@ -29,7 +29,7 @@ export const Reviews = () => {
                 {t.reviews.kicker} · Voix
               </span>
             </div>
-            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2.4rem,5.8vw,5rem)]">
+            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,5.8vw,5rem)]">
               {t.reviews.title.split(" ").slice(0, -1).join(" ")}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 {t.reviews.title.split(" ").slice(-1)[0]}

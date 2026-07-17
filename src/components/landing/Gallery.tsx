@@ -99,7 +99,7 @@ export const Gallery = () => {
                 {t.gallery.kicker} · Avant / Après
               </span>
             </div>
-            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2.4rem,5.8vw,5rem)]">
+            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,5.8vw,5rem)]">
               {t.gallery.title.split("/")[0].trim()}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 / {t.gallery.title.split("/")[1]?.trim() ?? "Keyin"}

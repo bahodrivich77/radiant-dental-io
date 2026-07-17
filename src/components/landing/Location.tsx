@@ -26,7 +26,7 @@ export const Location = () => {
                 {t.location.kicker} · Adresse
               </span>
             </div>
-            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2.4rem,5.6vw,4.6rem)]">
+            <h2 className="font-display font-light leading-[0.9] tracking-[-0.02em] text-[clamp(2rem,5.6vw,4.6rem)]">
               {t.location.title.split(" ").slice(0, -1).join(" ")}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 {t.location.title.split(" ").slice(-1)[0]}

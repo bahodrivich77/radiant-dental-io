@@ -40,7 +40,7 @@ export const CtaBanner = () => {
                 Colophon · Prenez rendez-vous
               </span>
             </div>
-            <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-[clamp(2.6rem,6vw,5.5rem)] max-w-3xl">
+            <h2 className="font-display font-light leading-[0.92] tracking-[-0.02em] text-[clamp(2.1rem,6vw,5.5rem)] max-w-3xl">
               {title.split(" ").slice(0, -1).join(" ")}{" "}
               <em className="italic text-[hsl(var(--gold))] font-normal">
                 {title.split(" ").slice(-1)[0]}
