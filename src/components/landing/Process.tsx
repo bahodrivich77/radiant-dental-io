@@ -70,7 +70,7 @@ export const Process = () => {
                   className="relative pl-[68px] md:pl-[92px] pb-14 md:pb-16 last:pb-0"
                 >
                   {/* Node */}
-                  <span className="absolute left-0 top-1 grid place-items-center w-[46px] h-[46px] md:w-[62px] md:h-[62px] rounded-full bg-[hsl(var(--primary))] border border-[hsl(var(--gold))/50] text-[hsl(var(--gold))]">
+                  <span className="absolute left-0 top-1 grid place-items-center w-[46px] h-[46px] md:w-[62px] md:h-[62px] rounded-full bg-[hsl(var(--primary))] border border-[hsl(var(--gold)/0.5)] text-[hsl(var(--gold))]">
                     <Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.4} />
                   </span>
 
