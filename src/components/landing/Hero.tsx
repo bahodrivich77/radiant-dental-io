@@ -217,7 +217,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-16 lg:py-0"
+          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-24 lg:pb-16"
         >
           <div className="relative w-full max-w-[460px] aspect-[4/5]">
             {/* Architectural offset borders */}
