@@ -45,7 +45,7 @@ export const Pricing = () => {
               {t.pricing.desc}
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-background border border-[hsl(var(--primary))/20] text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-background border border-[hsl(var(--primary)/0.2)] text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
                 <Check className="w-3 h-3" /> {t.pricing.free}
               </span>
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[hsl(var(--gold))] text-foreground text-[10px] font-bold uppercase tracking-[0.2em]">
