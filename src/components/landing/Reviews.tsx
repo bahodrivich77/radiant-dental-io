@@ -66,9 +66,9 @@ export const Reviews = () => {
           {items.map((r, i) => (
             <motion.article
               key={i}
-              initial={{ opacity: 0.6 }}
+              initial={{ opacity: 1 }}
               whileHover={{ opacity: 1 }}
-              className="w-[360px] sm:w-[420px] shrink-0 bg-[hsl(var(--background))] border border-foreground/10 p-8 md:p-9 relative"
+              className="w-[300px] sm:w-[380px] md:w-[420px] shrink-0 bg-[hsl(var(--background))] border border-foreground/10 p-7 sm:p-8 md:p-9 relative"
             >
               <Quote
                 className="absolute top-6 right-6 w-8 h-8 text-[hsl(var(--gold))]/20"
