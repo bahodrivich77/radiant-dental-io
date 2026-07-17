@@ -46,7 +46,7 @@ export const SectionIndex = () => {
   return (
     <nav
       aria-label="Section index"
-      className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1 py-3 px-2"
+      className="hidden 2xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1 py-3 px-2"
     >
       {SECTIONS.map((s) => {
         const isActive = active === s.id;

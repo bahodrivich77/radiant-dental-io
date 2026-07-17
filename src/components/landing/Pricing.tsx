@@ -45,7 +45,7 @@ export const Pricing = () => {
               {t.pricing.desc}
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-background border border-[hsl(var(--primary))/20] text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-background border border-[hsl(var(--primary)/0.2)] text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
                 <Check className="w-3 h-3" /> {t.pricing.free}
               </span>
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[hsl(var(--gold))] text-foreground text-[10px] font-bold uppercase tracking-[0.2em]">
@@ -80,7 +80,7 @@ export const Pricing = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.4, delay: i * 0.04 }}
-                  className="group grid grid-cols-[auto,1fr,auto] items-baseline gap-3 md:gap-4 py-4 md:py-5 border-b border-dashed border-foreground/10 last:border-0 hover:border-solid hover:border-[hsl(var(--gold))/40] transition-colors"
+                  className="group grid grid-cols-[auto,1fr,auto] items-baseline gap-3 md:gap-4 py-4 md:py-5 border-b border-dashed border-foreground/10 last:border-0 hover:border-solid hover:border-[hsl(var(--gold)/0.4)] transition-colors"
                 >
                   <span className="font-display text-sm text-foreground/40 tabular-nums w-8">
                     {String(i + 1).padStart(2, "0")}

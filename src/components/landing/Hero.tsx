@@ -170,8 +170,8 @@ export const Hero = () => {
             className="mt-14 flex items-center gap-6 md:gap-8"
           >
             <div className="flex -space-x-3">
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.12)] border border-[hsl(var(--gold))/30]" />
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.18)] border border-[hsl(var(--gold))/30]" />
+              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.12)] border border-[hsl(var(--gold)/0.3)]" />
+              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.18)] border border-[hsl(var(--gold)/0.3)]" />
               <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--gold))] grid place-items-center text-[10px] font-bold text-[hsl(var(--primary-foreground))]">
                 +10
               </div>
@@ -217,7 +217,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-16 lg:py-0"
+          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-24 lg:pb-16"
         >
           <div className="relative w-full max-w-[460px] aspect-[4/5]">
             {/* Architectural offset borders */}
@@ -252,7 +252,7 @@ export const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9, duration: 0.7 }}
-              className="absolute -bottom-10 right-6 md:right-12 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-7 md:p-9 z-30 shadow-elevated min-w-[200px]"
+              className="absolute -bottom-16 md:-bottom-20 right-4 md:right-8 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[200px]"
             >
               <div className="font-display text-6xl md:text-7xl font-light leading-none text-[hsl(var(--gold))] tabular-nums">
                 10<span className="text-2xl md:text-3xl align-top">+</span>
