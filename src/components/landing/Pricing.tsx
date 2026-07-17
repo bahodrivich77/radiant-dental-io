@@ -80,7 +80,7 @@ export const Pricing = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.4, delay: i * 0.04 }}
-                  className="group grid grid-cols-[auto,1fr,auto] items-baseline gap-3 md:gap-4 py-4 md:py-5 border-b border-dashed border-foreground/10 last:border-0 hover:border-solid hover:border-[hsl(var(--gold))/40] transition-colors"
+                  className="group grid grid-cols-[auto,1fr,auto] items-baseline gap-3 md:gap-4 py-4 md:py-5 border-b border-dashed border-foreground/10 last:border-0 hover:border-solid hover:border-[hsl(var(--gold)/0.4)] transition-colors"
                 >
                   <span className="font-display text-sm text-foreground/40 tabular-nums w-8">
                     {String(i + 1).padStart(2, "0")}
