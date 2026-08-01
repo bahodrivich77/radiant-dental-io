@@ -267,7 +267,7 @@ export const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9, duration: 0.7 }}
-              className="absolute -bottom-16 md:-bottom-20 right-4 md:right-8 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[200px]"
+              className="absolute -bottom-24 md:-bottom-28 right-0 md:-right-6 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[190px] md:min-w-[210px]"
             >
               <div className="font-display text-6xl md:text-7xl font-light leading-none text-[hsl(var(--gold))] tabular-nums">
                 10<span className="text-2xl md:text-3xl align-top">+</span>
