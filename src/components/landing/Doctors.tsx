@@ -1,16 +1,12 @@
 import { motion } from "framer-motion";
 import { GraduationCap, ArrowUpRight } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
+import doc1 from "@/assets/doctor-1.jpg";
+import doc2 from "@/assets/doctor-2.jpg";
+import doc3 from "@/assets/doctor-3.jpg";
 
-const initials = (name: string) =>
-  name
-    .replace(/^Dr\.?\s*|^Др\.?\s*/i, "")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((s) => s[0])
-    .join("")
-    .toUpperCase();
+const PORTRAITS = [doc1, doc2, doc3];
+
 
 export const Doctors = () => {
   const { t } = useLang();
