@@ -170,12 +170,23 @@ export const Hero = () => {
             className="mt-14 flex items-center gap-6 md:gap-8"
           >
             <div className="flex -space-x-3">
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.12)] border border-[hsl(var(--gold)/0.3)]" />
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.18)] border border-[hsl(var(--gold)/0.3)]" />
+              {[doc1, doc2, doc3].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover object-top ring-4 ring-[hsl(var(--background))] border border-[hsl(var(--gold)/0.35)]"
+                />
+              ))}
               <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--gold))] grid place-items-center text-[10px] font-bold text-[hsl(var(--primary-foreground))]">
                 +10
               </div>
             </div>
+
             <div className="h-10 w-px bg-foreground/15" />
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/45 font-bold mb-1">
