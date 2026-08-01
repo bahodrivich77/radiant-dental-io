@@ -244,7 +244,10 @@ export const Hero = () => {
               <motion.img
                 src={heroImg}
                 alt="DentaLux — Toshkentdagi premium stomatologiya interyeri"
+                fetchPriority="high"
+                decoding="async"
                 width={1280}
+
                 height={1600}
                 style={{ y: imgY, scale: imgScale }}
                 className="absolute inset-0 w-full h-full object-cover will-change-transform"
