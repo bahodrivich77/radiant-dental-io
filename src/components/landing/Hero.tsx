@@ -3,6 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Star } from "lucide-react";
 import heroImg from "@/assets/hero-clinic.jpg";
+import doc1 from "@/assets/doctor-1.jpg";
+import doc2 from "@/assets/doctor-2.jpg";
+import doc3 from "@/assets/doctor-3.jpg";
+
 import { useLang } from "@/i18n/LanguageContext";
 
 const statValues = [10, 5000, 98, 1];
