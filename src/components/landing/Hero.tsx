@@ -3,6 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Star } from "lucide-react";
 import heroImg from "@/assets/hero-clinic.jpg";
+import doc1 from "@/assets/doctor-1.jpg";
+import doc2 from "@/assets/doctor-2.jpg";
+import doc3 from "@/assets/doctor-3.jpg";
+
 import { useLang } from "@/i18n/LanguageContext";
 
 const statValues = [10, 5000, 98, 1];
@@ -170,12 +174,23 @@ export const Hero = () => {
             className="mt-14 flex items-center gap-6 md:gap-8"
           >
             <div className="flex -space-x-3">
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.12)] border border-[hsl(var(--gold)/0.3)]" />
-              <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--primary)/0.18)] border border-[hsl(var(--gold)/0.3)]" />
+              {[doc1, doc2, doc3].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover object-top ring-4 ring-[hsl(var(--background))] border border-[hsl(var(--gold)/0.35)]"
+                />
+              ))}
               <div className="w-11 h-11 rounded-full ring-4 ring-[hsl(var(--background))] bg-[hsl(var(--gold))] grid place-items-center text-[10px] font-bold text-[hsl(var(--primary-foreground))]">
                 +10
               </div>
             </div>
+
             <div className="h-10 w-px bg-foreground/15" />
             <div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/45 font-bold mb-1">
@@ -252,7 +267,7 @@ export const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.9, duration: 0.7 }}
-              className="absolute -bottom-16 md:-bottom-20 right-4 md:right-8 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[200px]"
+              className="absolute -bottom-24 md:-bottom-28 right-0 md:-right-6 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[190px] md:min-w-[210px]"
             >
               <div className="font-display text-6xl md:text-7xl font-light leading-none text-[hsl(var(--gold))] tabular-nums">
                 10<span className="text-2xl md:text-3xl align-top">+</span>

@@ -78,7 +78,7 @@ export const Pricing = () => {
                   key={p.name}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-20px" }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{ duration: 0.4, delay: i * 0.04 }}
                   className="group grid grid-cols-[auto,1fr,auto] items-baseline gap-3 md:gap-4 py-4 md:py-5 border-b border-dashed border-foreground/10 last:border-0 hover:border-solid hover:border-[hsl(var(--gold)/0.4)] transition-colors"
                 >

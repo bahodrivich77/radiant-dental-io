@@ -1,16 +1,12 @@
 import { motion } from "framer-motion";
 import { GraduationCap, ArrowUpRight } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
+import doc1 from "@/assets/doctor-1.jpg";
+import doc2 from "@/assets/doctor-2.jpg";
+import doc3 from "@/assets/doctor-3.jpg";
 
-const initials = (name: string) =>
-  name
-    .replace(/^Dr\.?\s*|^Др\.?\s*/i, "")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((s) => s[0])
-    .join("")
-    .toUpperCase();
+const PORTRAITS = [doc1, doc2, doc3];
+
 
 export const Doctors = () => {
   const { t } = useLang();
@@ -60,30 +56,37 @@ export const Doctors = () => {
               key={d.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="group relative"
             >
               {/* Portrait plate */}
               <div className="relative aspect-[4/5] overflow-hidden bg-[hsl(var(--primary))]/5">
                 {/* offset gold frame */}
-                <span className="absolute -top-3 -right-3 w-full h-full border border-[hsl(var(--gold))]/35 pointer-events-none z-0" />
+                <span className="absolute -top-3 -right-3 w-full h-full border border-[hsl(var(--gold))]/35 pointer-events-none z-20" />
 
                 {/* portrait surface */}
-                <div className="relative w-full h-full grid place-items-center bg-gradient-to-br from-[hsl(var(--primary))]/10 via-[hsl(var(--muted))] to-[hsl(var(--gold))]/10 overflow-hidden">
-                  <span className="font-display italic text-[10rem] leading-none text-[hsl(var(--primary))]/25 select-none transition-transform duration-[1200ms] ease-out group-hover:scale-105">
-                    {initials(d.name)}
-                  </span>
+                <div className="relative w-full h-full overflow-hidden">
+                  <img
+                    src={PORTRAITS[i % PORTRAITS.length]}
+                    alt={`${d.name} — ${d.role}, DentaLux Toshkent`}
+                    loading="lazy"
+                    width={800}
+                    height={1008}
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--primary))]/45 via-transparent to-transparent pointer-events-none" />
 
                   {/* watermark plate no. */}
-                  <span className="absolute top-4 left-4 text-[9px] uppercase tracking-[0.4em] text-foreground/40">
+                  <span className="absolute top-4 left-4 text-[9px] uppercase tracking-[0.4em] text-[hsl(var(--background))]/80 mix-blend-difference">
                     — Plate N° {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="absolute bottom-4 right-4 text-[9px] uppercase tracking-[0.3em] text-foreground/40">
+                  <span className="absolute bottom-4 right-4 text-[9px] uppercase tracking-[0.3em] text-[hsl(var(--background))]/75">
                     Toshkent · MMXIV
                   </span>
                 </div>
               </div>
+
 
               {/* Meta */}
               <div className="mt-6 pt-5 border-t border-foreground/15">
