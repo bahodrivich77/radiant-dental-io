@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Star } from "lucide-react";
 import heroImg from "@/assets/hero-clinic.jpg";
 import doc1 from "@/assets/doctor-1.jpg";
@@ -30,6 +28,35 @@ const useCounter = (to: number, run: boolean, duration = 1800) => {
   return val;
 };
 
+/** Writes a 0→1 scroll progress of the section into the `--hp` CSS variable. */
+const useScrollVar = (ref: React.RefObject<HTMLElement>) => {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const rect = el.getBoundingClientRect();
+      const total = rect.height || 1;
+      const p = Math.min(Math.max(-rect.top / total, 0), 1);
+      el.style.setProperty("--hp", p.toFixed(4));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [ref]);
+};
+
 const GoogleGlyph = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24" aria-hidden>
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -41,19 +68,11 @@ const GoogleGlyph = () => (
 
 export const Hero = () => {
   const { t } = useLang();
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const [run, setRun] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const imgY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.1]);
-  const watermarkY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const badgeY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  useScrollVar(sectionRef);
 
   useEffect(() => {
     const el = statsRef.current;
@@ -70,7 +89,7 @@ export const Hero = () => {
     <section
       id="home"
       ref={sectionRef}
-      className="relative pt-28 md:pt-36 pb-24 md:pb-32 gradient-hero overflow-hidden"
+      className="relative pt-28 md:pt-36 pb-24 md:pb-32 gradient-hero overflow-hidden [--hp:0]"
     >
       {/* Editorial paper texture */}
       <div className="absolute inset-0 gradient-mesh opacity-30 pointer-events-none" />
@@ -83,39 +102,32 @@ export const Hero = () => {
       />
 
       {/* Rotated background wordmark */}
-      <motion.div
+      <div
         aria-hidden
-        style={{ y: watermarkY }}
-        className="absolute -left-24 md:-left-32 top-1/2 -translate-y-1/2 -rotate-90 origin-center pointer-events-none select-none hidden md:block"
+        style={{ transform: "translateY(calc(-50% + var(--hp) * -80px)) rotate(-90deg)" }}
+        className="absolute -left-24 md:-left-32 top-1/2 origin-center pointer-events-none select-none hidden md:block will-change-transform"
       >
         <span className="font-display text-[10rem] lg:text-[14rem] font-semibold tracking-tighter leading-none uppercase whitespace-nowrap text-foreground/[0.035]">
           Dental Excellence
         </span>
-      </motion.div>
+      </div>
 
       <div className="container relative grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
         {/* LEFT — Editorial type column */}
-        <motion.div style={{ y: textY }} className="lg:col-span-6 relative z-20">
+        <div
+          style={{ transform: "translateY(calc(var(--hp) * -30px))" }}
+          className="lg:col-span-6 relative z-20 will-change-transform"
+        >
           {/* Kicker */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-4 mb-8 md:mb-10 overflow-hidden"
-          >
+          <div className="flex items-center gap-4 mb-8 md:mb-10 overflow-hidden reveal-x">
             <span className="h-px w-14 bg-[hsl(var(--gold))]" />
             <span className="text-[11px] uppercase tracking-[0.4em] font-semibold text-[hsl(var(--gold))]">
               {t.hero.badge}
             </span>
-          </motion.div>
+          </div>
 
           {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light leading-[0.9] tracking-[-0.02em] text-foreground text-[clamp(2.1rem,7vw,6.5rem)]"
-          >
+          <h1 className="reveal-up font-display font-light leading-[0.9] tracking-[-0.02em] text-foreground text-[clamp(2.1rem,7vw,6.5rem)]">
             {t.hero.titleA.split(" ").slice(0, -1).join(" ")}{" "}
             <br className="hidden sm:block" />
             <em className="italic font-normal text-[hsl(var(--gold))]">
@@ -126,24 +138,20 @@ export const Hero = () => {
             <span className="font-light">
               {t.hero.titleB.split(" ").slice(1).join(" ")}
             </span>
-          </motion.h1>
+          </h1>
 
           {/* Lead */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 max-w-md text-[15px] leading-[1.75] text-foreground/65 font-light"
+          <p
+            style={{ animationDelay: "0.3s" }}
+            className="reveal-up mt-10 max-w-md text-[15px] leading-[1.75] text-foreground/65 font-light"
           >
             {t.hero.desc1} <span className="text-foreground/45">— {t.hero.desc3}</span>
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
+          <div
+            style={{ animationDelay: "0.5s" }}
+            className="reveal-up mt-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
           >
             {/* Primary — vertical fill on hover */}
             <a
@@ -164,14 +172,12 @@ export const Hero = () => {
               {t.hero.cta2}
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-          </motion.div>
+          </div>
 
           {/* Trust row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-14 flex items-center gap-6 md:gap-8"
+          <div
+            style={{ animationDelay: "0.7s" }}
+            className="reveal-up mt-14 flex items-center gap-6 md:gap-8"
           >
             <div className="flex -space-x-3">
               {[doc1, doc2, doc3].map((src, i) => (
@@ -181,6 +187,7 @@ export const Hero = () => {
                   alt=""
                   aria-hidden
                   loading="lazy"
+                  decoding="async"
                   width={44}
                   height={44}
                   className="w-11 h-11 rounded-full object-cover object-top ring-4 ring-[hsl(var(--background))] border border-[hsl(var(--gold)/0.35)]"
@@ -200,7 +207,7 @@ export const Hero = () => {
                 {t.hero.stats[2]?.label ?? "Yevropa standartlari"}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Editorial stat rule */}
           <div
@@ -225,14 +232,12 @@ export const Hero = () => {
               return <C key={i} />;
             })}
           </div>
-        </motion.div>
+        </div>
 
         {/* RIGHT — Architectural framed plate */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-24 lg:pb-16"
+        <div
+          style={{ animationDelay: "0.2s" }}
+          className="reveal-up lg:col-span-6 relative flex justify-center lg:justify-end pt-6 pb-24 lg:pb-16"
         >
           <div className="relative w-full max-w-[460px] aspect-[4/5]">
             {/* Architectural offset borders */}
@@ -241,15 +246,17 @@ export const Hero = () => {
 
             {/* Main framed image */}
             <div className="relative w-full h-full overflow-hidden z-10 shadow-[30px_30px_80px_-20px_hsl(var(--primary)/0.25)]">
-              <motion.img
+              <img
                 src={heroImg}
                 alt="DentaLux — Toshkentdagi premium stomatologiya interyeri"
                 fetchPriority="high"
                 decoding="async"
                 width={1280}
-
                 height={1600}
-                style={{ y: imgY, scale: imgScale }}
+                style={{
+                  transform:
+                    "translateY(calc(var(--hp) * 60px)) scale(calc(1.02 + var(--hp) * 0.08))",
+                }}
                 className="absolute inset-0 w-full h-full object-cover will-change-transform"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--primary))]/35 via-transparent to-transparent pointer-events-none" />
@@ -265,12 +272,12 @@ export const Hero = () => {
             </div>
 
             {/* Floating dark "10+" credibility badge */}
-            <motion.div
-              style={{ y: badgeY }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9, duration: 0.7 }}
-              className="absolute -bottom-24 md:-bottom-28 right-0 md:-right-6 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[190px] md:min-w-[210px]"
+            <div
+              style={{
+                animationDelay: "0.9s",
+                transform: "translateY(calc(var(--hp) * -40px))",
+              }}
+              className="reveal-pop absolute -bottom-24 md:-bottom-28 right-0 md:-right-6 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] p-6 md:p-8 z-30 shadow-elevated min-w-[190px] md:min-w-[210px] will-change-transform"
             >
               <div className="font-display text-6xl md:text-7xl font-light leading-none text-[hsl(var(--gold))] tabular-nums">
                 10<span className="text-2xl md:text-3xl align-top">+</span>
@@ -286,14 +293,12 @@ export const Hero = () => {
               >
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
               </svg>
-            </motion.div>
+            </div>
 
             {/* Floating Google rating card */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.7 }}
-              className="absolute -top-6 -left-4 md:-left-12 bg-[hsl(var(--background))]/95 backdrop-blur-md border border-foreground/10 p-5 z-30 shadow-elevated flex items-center gap-4"
+            <div
+              style={{ animationDelay: "1.1s" }}
+              className="reveal-down absolute -top-6 -left-4 md:-left-12 bg-[hsl(var(--background))]/95 backdrop-blur-md border border-foreground/10 p-5 z-30 shadow-elevated flex items-center gap-4"
             >
               <div className="w-11 h-11 grid place-items-center bg-[hsl(var(--background))] shadow-inner">
                 <GoogleGlyph />
@@ -308,9 +313,9 @@ export const Hero = () => {
                   4.9 · 312 sharhlar
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
