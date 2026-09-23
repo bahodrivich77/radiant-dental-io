@@ -28,38 +28,36 @@ const Index = () => {
       <main className="pb-20 md:pb-0">
         <Hero />
         <BadgeStrip />
-        <Suspense fallback={null}>
-          <DeferredSection id="services" minHeight={900}>
-            <Services />
-          </DeferredSection>
-          <DeferredSection id="process" minHeight={900}>
-            <Process />
-          </DeferredSection>
-          <DeferredSection id="why" minHeight={800}>
-            <About />
-          </DeferredSection>
-          <DeferredSection id="doctors" minHeight={1000}>
-            <Doctors />
-          </DeferredSection>
-          <DeferredSection id="gallery" minHeight={900}>
-            <Gallery />
-          </DeferredSection>
-          <DeferredSection id="pricing" minHeight={900}>
-            <Pricing />
-          </DeferredSection>
-          <DeferredSection id="reviews" minHeight={700}>
-            <Reviews />
-          </DeferredSection>
-          <DeferredSection id="contact" minHeight={1000}>
-            <Booking />
-          </DeferredSection>
-          <DeferredSection minHeight={800}>
-            <Location />
-          </DeferredSection>
-          <DeferredSection minHeight={500}>
-            <CtaBanner />
-          </DeferredSection>
-        </Suspense>
+        <DeferredSection id="services" minHeight={900}>
+          <Services />
+        </DeferredSection>
+        <DeferredSection id="process" minHeight={900}>
+          <Process />
+        </DeferredSection>
+        <DeferredSection id="why" minHeight={800}>
+          <About />
+        </DeferredSection>
+        <DeferredSection id="doctors" minHeight={1000}>
+          <Doctors />
+        </DeferredSection>
+        <DeferredSection id="gallery" minHeight={900}>
+          <Gallery />
+        </DeferredSection>
+        <DeferredSection id="pricing" minHeight={900}>
+          <Pricing />
+        </DeferredSection>
+        <DeferredSection id="reviews" minHeight={700}>
+          <Reviews />
+        </DeferredSection>
+        <DeferredSection id="contact" minHeight={1000}>
+          <Booking />
+        </DeferredSection>
+        <DeferredSection minHeight={800}>
+          <Location />
+        </DeferredSection>
+        <DeferredSection minHeight={500}>
+          <CtaBanner />
+        </DeferredSection>
       </main>
       <Suspense fallback={null}>
         <DeferredSection minHeight={600}>
