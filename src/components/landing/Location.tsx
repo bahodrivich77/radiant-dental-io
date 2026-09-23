@@ -136,7 +136,7 @@ export const Location = () => {
             <span className="absolute -top-4 -right-4 w-full h-full border border-[hsl(var(--gold))]/35 pointer-events-none z-0" />
             <div className="relative overflow-hidden border border-foreground/15 min-h-[420px] lg:min-h-[560px] shadow-[0_28px_70px_-30px_hsl(var(--primary)/0.35)] z-10">
               <iframe
-                title="DentaLux clinic location"
+                title="ZAHRODENTAL klinikasi manzili"
                 src={EMBED}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -148,7 +148,7 @@ export const Location = () => {
                   — Plate N° X
                 </p>
                 <p className="text-[11px] font-display italic text-foreground mt-0.5">
-                  DentaLux · Mirzo Ulug‘bek
+                  ZAHRODENTAL · Mirzo Ulug‘bek
                 </p>
               </div>
             </div>

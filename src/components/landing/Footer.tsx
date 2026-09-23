@@ -8,7 +8,7 @@ export const Footer = () => {
       {/* Enormous editorial wordmark */}
       <div className="absolute inset-x-0 bottom-[-3vw] pointer-events-none select-none">
         <p className="font-display italic text-[26vw] leading-none tracking-tighter text-center text-background/[0.05] whitespace-nowrap">
-          DentaLux
+          ZAHRODENTAL
         </p>
       </div>
 
@@ -42,7 +42,7 @@ export const Footer = () => {
                 </svg>
               </span>
               <span className="font-display italic text-3xl text-background font-normal tracking-tight">
-                Denta<span className="text-[hsl(var(--gold))]">Lux</span>
+                Zahro<span className="text-[hsl(var(--gold))]">Dental</span>
               </span>
             </a>
             <p className="mt-6 text-[14px] leading-[1.75] font-light max-w-sm text-background/65">
@@ -97,7 +97,7 @@ export const Footer = () => {
               <li className="font-display italic text-xl text-background">
                 {t.location.phone}
               </li>
-              <li>info@dentalux.uz</li>
+              <li>info@zahrodental.uz</li>
               <li>{t.location.address}</li>
               <li className="pt-2 text-[12px] text-background/50">
                 {t.location.hoursWeek} · {t.location.hoursSun}
@@ -108,7 +108,7 @@ export const Footer = () => {
 
         {/* Bottom line */}
         <div className="mt-16 pt-6 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.28em] text-background/45">
-          <span>© 2026 DentaLux — {t.footer.rights}</span>
+          <span>© 2026 ZAHRODENTAL — {t.footer.rights}</span>
           <span className="font-display italic text-sm normal-case tracking-normal text-background/55">
             “Sog‘lom tabassum — bizning san’atimiz.”
           </span>

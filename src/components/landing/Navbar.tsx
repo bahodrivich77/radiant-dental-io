@@ -45,8 +45,8 @@ export const Navbar = () => {
           <path d="M12 3c-2.5 0-4 1-5.5 1S3 3 3 6c0 4 1.5 6 2.5 9.5C6.2 18 7 21 9 21c1.5 0 1.8-3 3-3s1.5 3 3 3c2 0 2.8-3 3.5-5.5C19.5 12 21 10 21 6c0-3-2-2-3.5-2S14.5 3 12 3z"/>
         </svg>
       </span>
-      <span className="font-display text-2xl font-semibold tracking-tight leading-none">
-        Denta<span className="text-gold">Lux</span>
+      <span className="font-display text-xl sm:text-2xl font-semibold tracking-normal leading-none uppercase">
+        Zahro<span className="text-gold">Dental</span>
       </span>
     </a>
   );

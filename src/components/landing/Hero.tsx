@@ -248,7 +248,7 @@ export const Hero = () => {
             <div className="relative w-full h-full overflow-hidden z-10 shadow-[30px_30px_80px_-20px_hsl(var(--primary)/0.25)]">
               <img
                 src={heroImg}
-                alt="DentaLux — Toshkentdagi premium stomatologiya interyeri"
+                alt="ZAHRODENTAL — Toshkentdagi premium stomatologiya interyeri"
                 fetchPriority="high"
                 decoding="async"
                 width={1280}
