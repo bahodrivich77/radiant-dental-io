@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, Suspense, useEffect, useRef, useState } from "react";
 
 interface DeferredSectionProps {
   /** Anchor id kept on the placeholder so in-page links still resolve. */
@@ -37,17 +37,26 @@ export const DeferredSection = ({ id, minHeight = 600, children }: DeferredSecti
     );
     io.observe(el);
 
-    const onDemand = () => setShow(true);
-    window.addEventListener("hashchange", onDemand);
+    const onDemand = () => {
+      if (id && window.location.hash === `#${id}`) setShow(true);
+    };
+    onDemand();
+    if (id) window.addEventListener("hashchange", onDemand);
     return () => {
       io.disconnect();
-      window.removeEventListener("hashchange", onDemand);
+      if (id) window.removeEventListener("hashchange", onDemand);
     };
-  }, [show]);
+  }, [id, show]);
 
   return (
     <div ref={ref} id={show ? undefined : id} style={{ minHeight }}>
-      {show ? children : <div aria-hidden />}
+      {show ? (
+        <Suspense fallback={<div aria-hidden style={{ minHeight }} />}>
+          {children}
+        </Suspense>
+      ) : (
+        <div aria-hidden style={{ minHeight }} />
+      )}
     </div>
   );
 };
