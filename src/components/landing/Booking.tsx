@@ -15,7 +15,7 @@ import { ArrowUpRight, MessageCircle, Send } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
 const WHATSAPP = "https://wa.me/998901234567";
-const TELEGRAM = "https://t.me/dentaluxuz";
+const TELEGRAM = "https://t.me/zahrodentaluz";
 
 export const Booking = () => {
   const { t } = useLang();

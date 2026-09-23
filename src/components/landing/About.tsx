@@ -17,7 +17,7 @@ export const About = () => {
               {/* Rotated vertical label */}
               <div className="hidden lg:block absolute -left-8 top-0 h-full">
                 <div className="rotate-180 [writing-mode:vertical-rl] text-[10px] uppercase tracking-[0.4em] font-semibold text-foreground/40 whitespace-nowrap">
-                  Maison DentaLux · Est. MMXIV · Tashkent
+                  Maison ZAHRODENTAL · Est. MMXIV · Tashkent
                 </div>
               </div>
 
@@ -27,7 +27,7 @@ export const About = () => {
               <div className="relative w-full h-full overflow-hidden shadow-elevated z-10">
                 <img
                   src={heroImg}
-                  alt="DentaLux atelier"
+                  alt="ZAHRODENTAL klinikasi"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />

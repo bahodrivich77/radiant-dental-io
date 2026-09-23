@@ -45,7 +45,7 @@ const dict = {
       ],
     },
     why: {
-      kicker: "Nega DentaLux?",
+      kicker: "Nega ZAHRODENTAL?",
       title: "Bizning ustunliklarimiz",
       items: [
         { title: "Og‘riqsiz davolash", desc: "Zamonaviy anesteziya va yumshoq texnologiyalar." },
@@ -99,7 +99,7 @@ const dict = {
       items: [
         { rating: 5, name: "Aziza K.", treatment: "Vinirlar", text: "Tabassumim umuman o‘zgardi. Shifokorlar professional, klinika tartibli." },
         { rating: 5, name: "Bekzod T.", treatment: "Implant", text: "Implant qo‘ydirdim — umuman og‘riq sezmadim. Barchasi rejaga muvofiq." },
-        { rating: 5, name: "Mohira R.", treatment: "Bolalar davolash", text: "Bolam endi stomatologdan qo‘rqmaydi. Rahmat DentaLux!" },
+        { rating: 5, name: "Mohira R.", treatment: "Bolalar davolash", text: "Bolam endi stomatologdan qo‘rqmaydi. Rahmat ZAHRODENTAL!" },
         { rating: 5, name: "Jasur M.", treatment: "Oqartirish", text: "Zoom oqartirish — natija ajoyib. Bir soatda 6 tonga oqardi." },
         { rating: 5, name: "Dilnoza S.", treatment: "Karies davolash", text: "Mikroskop bilan ishlashadi — eski tishlarim qutqarildi." },
       ],
@@ -223,7 +223,7 @@ const dict = {
       ],
     },
     why: {
-      kicker: "Почему DentaLux?",
+      kicker: "Почему ZAHRODENTAL?",
       title: "Наши преимущества",
       items: [
         { title: "Безболезненное лечение", desc: "Современная анестезия и щадящие технологии." },
@@ -277,7 +277,7 @@ const dict = {
       items: [
         { rating: 5, name: "Азиза К.", treatment: "Виниры", text: "Улыбка полностью преобразилась. Врачи профессиональны, клиника безупречна." },
         { rating: 5, name: "Бекзод Т.", treatment: "Имплант", text: "Поставил имплант — никакой боли. Всё чётко по плану." },
-        { rating: 5, name: "Мохира Р.", treatment: "Детское лечение", text: "Ребёнок больше не боится стоматолога. Спасибо DentaLux!" },
+        { rating: 5, name: "Мохира Р.", treatment: "Детское лечение", text: "Ребёнок больше не боится стоматолога. Спасибо ZAHRODENTAL!" },
         { rating: 5, name: "Джасур М.", treatment: "Отбеливание", text: "Zoom-отбеливание — потрясающий результат за один час." },
         { rating: 5, name: "Дилноза С.", treatment: "Лечение кариеса", text: "Работают с микроскопом — спасли зубы, которые другие предлагали удалять." },
       ],
@@ -401,7 +401,7 @@ const dict = {
       ],
     },
     why: {
-      kicker: "Why DentaLux?",
+      kicker: "Why ZAHRODENTAL?",
       title: "Our advantages",
       items: [
         { title: "Painless treatment", desc: "Modern anesthesia and gentle techniques." },
@@ -455,7 +455,7 @@ const dict = {
       items: [
         { rating: 5, name: "Aziza K.", treatment: "Veneers", text: "My smile is completely transformed. Professional team, immaculate clinic." },
         { rating: 5, name: "Bekzod T.", treatment: "Implant", text: "Got an implant — zero pain. Everything went exactly as planned." },
-        { rating: 5, name: "Mohira R.", treatment: "Pediatric", text: "My child is no longer scared of the dentist. Thank you DentaLux!" },
+        { rating: 5, name: "Mohira R.", treatment: "Pediatric", text: "My child is no longer scared of the dentist. Thank you ZAHRODENTAL!" },
         { rating: 5, name: "Jasur M.", treatment: "Whitening", text: "Zoom whitening — incredible result in a single hour." },
         { rating: 5, name: "Dilnoza S.", treatment: "Treatment", text: "They work with a microscope — saved teeth others wanted to extract." },
       ],

@@ -45,7 +45,9 @@ export const DeferredSection = ({ id, minHeight = 600, children }: DeferredSecti
     };
   }, [show]);
 
-  if (show) return <>{children}</>;
-
-  return <div ref={ref} id={id} aria-hidden style={{ minHeight }} />;
+  return (
+    <div ref={ref} id={show ? undefined : id} style={{ minHeight }}>
+      {show ? children : <div aria-hidden />}
+    </div>
+  );
 };

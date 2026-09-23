@@ -69,7 +69,7 @@ export const Doctors = () => {
                 <div className="relative w-full h-full overflow-hidden">
                   <img
                     src={PORTRAITS[i % PORTRAITS.length]}
-                    alt={`${d.name} — ${d.role}, DentaLux Toshkent`}
+                    alt={`${d.name} — ${d.role}, ZAHRODENTAL Toshkent`}
                     loading="lazy"
                     width={800}
                     height={1008}

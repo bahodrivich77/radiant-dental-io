@@ -21,7 +21,7 @@ export const CtaBanner = () => {
       {/* enormous editorial wordmark */}
       <div className="absolute inset-x-0 bottom-[-3.5rem] pointer-events-none select-none opacity-[0.06]">
         <p className="font-display italic text-[22vw] leading-none tracking-tighter text-center text-[hsl(var(--gold))] whitespace-nowrap">
-          DentaLux
+          ZAHRODENTAL
         </p>
       </div>
 
